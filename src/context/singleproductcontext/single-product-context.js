@@ -5,15 +5,19 @@ const SingleProductContext = createContext();
 
 export const SingleProductProvider = ({ children }) => {
   const { loading, error, data } = useQueryProduct();
-  //   const [singleProduct, setSingleProduct] = useState({});
-  //   useEffect(() => {
-  //     setSingleProduct({ data, loading, error });
-  //   }, []);
-  //   console.log(singleProduct);
+  const [singleProduct, setSingleProduct] = useState([]);
 
-  console.log(data);
+  const addToCart = (id) => {
+    const product = data.category.products.find((product) => product.id === id);
+    setSingleProduct(() => {
+      return { product };
+    });
+  };
+
   return (
-    <SingleProductContext.Provider value={"miriani"}>
+    <SingleProductContext.Provider
+      value={{ data, loading, error, addToCart, singleProduct }}
+    >
       {children}
     </SingleProductContext.Provider>
   );

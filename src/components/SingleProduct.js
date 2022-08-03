@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import styles from "./SingleProduct.module.css";
 import Loading from "./Loading";
-import { CartContext } from "../context/cartcontext/Cart-actions";
+import SingleProductContext from "../context/singleproductcontext/single-product-context";
 import { withRouter } from "react-router";
 
 class SingleProduct extends Component {
-  static contextType = CartContext;
+  static contextType = SingleProductContext;
   constructor(props) {
     super(props);
     this.state = {};
-    console.log(this.props.match.params.id);
   }
 
   componentDidMount() {
@@ -21,6 +20,7 @@ class SingleProduct extends Component {
       (product) => product.id === this.props.match.params.id
     );
     this.setState({
+      id: product.id,
       name: product.name,
       brand: product.brand,
       category: product.category,
@@ -33,18 +33,19 @@ class SingleProduct extends Component {
   render() {
     const { name, brand, category, description, gallery, inStock, prices } =
       this.state;
+    const { addToCart } = this.context;
     return (
       <div>
         <h1>{name}</h1>
-        <button className={styles.button}>Click and add to the cart</button>
+        <button
+          className={styles.button}
+          onClick={() => addToCart(this.props.match.params.id)}
+        >
+          ADD TO CART
+        </button>
       </div>
     );
   }
 }
 
 export default withRouter(SingleProduct);
-
-// priority applay the fetched single product to the to the state
-
-// when we click button we must send info
-// --- onClick --->context
