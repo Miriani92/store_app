@@ -1,0 +1,1 @@
+we need to trigger some ection when card item [cart] button is clicked to samwhaw register the item and based on that update cart bag.
