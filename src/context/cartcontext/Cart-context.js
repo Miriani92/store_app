@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useEffect } from "react";
-import useQueryProduct from "../hooks/useQueryProduct";
+import useQueryProduct from "../../hooks/useQueryProduct";
 
 export const CartContextCreator = (reducer, actions, defaultState) => {
   const CartContext = createContext();

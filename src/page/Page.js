@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "../components/Header";
 import Routes from "../routes/storeRoutes";
 import CartBag from "../components/Cart/Cart-bag";
-import { CartContext } from "../context/Cart-actions";
+import { CartContext } from "../context/cartcontext/Cart-actions";
 
 class Page extends Component {
   static contextType = CartContext;

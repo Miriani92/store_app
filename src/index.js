@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./api/apolloClient";
-import { CartContextProvider } from "./context/Cart-actions";
+import { CartContextProvider } from "./context/cartcontext/Cart-actions";
 
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 

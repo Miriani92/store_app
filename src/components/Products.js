@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ProductCard from "./ProdactCard";
 import styles from "./Products.module.css";
 import Loading from "./Loading";
-import { CartContext } from "../context/Cart-actions";
+import { CartContext } from "../context/cartcontext/Cart-actions";
 class Products extends Component {
   static contextType = CartContext;
   constructor(props) {

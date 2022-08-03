@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "./SingleProduct.module.css";
 import Loading from "./Loading";
-import { CartContext } from "../context/Cart-actions";
+import { CartContext } from "../context/cartcontext/Cart-actions";
 import { withRouter } from "react-router";
 
 class SingleProduct extends Component {
