@@ -4,6 +4,7 @@ import Allproducts from "../components/categores/All";
 import Tech from "../components/categores/Tech";
 import Clothes from "../components/categores/Clothes";
 import Cart from "../components/Cart/Cart";
+import SingleProduct from "../components/SingleProduct";
 class RouterWrapper extends Component {
   render() {
     return (
@@ -11,7 +12,8 @@ class RouterWrapper extends Component {
         <Route path="/" exact component={Allproducts} />
         <Route path="/clothes" component={Clothes} />
         <Route path="/tech" component={Tech} />
-        <Route path="/:id" component={Cart} />
+        <Route path="/singleproduct/:id" component={SingleProduct} />
+        <Route path="/cart" component={Cart} />
       </Switch>
     );
   }

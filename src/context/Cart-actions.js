@@ -1,6 +1,4 @@
-import { Get_SINGLE_PRODUCT } from "../api/query";
 import { TOGGLE_CART } from "./Cart-action-constats";
-// import { GET_SIGLE_PRODUCT } from "./Cart-action-constats";
 import { CartContextCreator } from "./Cart-context";
 
 const defaultState = { isCartOpen: false };

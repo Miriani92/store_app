@@ -10,16 +10,18 @@ class ProductCard extends Component {
   render() {
     const { name, gallery, id } = this.props;
     return (
-      <div className={styles.productWrapper}>
-        <div className={styles.wrapper}>
-          <img src={gallery[0]} className={styles.img} />
-          <p>{name}</p>
-          <Link className={styles.cartButton} to={`/${id}`}>
-            <BsCart />
-          </Link>
-          <p>$50</p>
+      <Link to={`/singleproduct/${id}`}>
+        <div className={styles.productWrapper}>
+          <div className={styles.wrapper}>
+            <img src={gallery[0]} className={styles.img} />
+            <p>{name}</p>
+            <Link className={styles.cartButton} to="cart">
+              <BsCart />
+            </Link>
+            <p>$50</p>
+          </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }

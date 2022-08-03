@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import useQueryProduct from "../hooks/useQueryProduct";
 
 export const CartContextCreator = (reducer, actions, defaultState) => {
@@ -14,7 +14,7 @@ export const CartContextCreator = (reducer, actions, defaultState) => {
     for (const key in actions) {
       boundActions[key] = actions[key](dispatch);
     }
-
+    useEffect(() => {}, []);
     return (
       <CartContext.Provider
         value={{ ...state, ...boundActions, loading, error, data }}
