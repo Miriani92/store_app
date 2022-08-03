@@ -5,8 +5,6 @@ export const CartContextCreator = (reducer, actions, defaultState) => {
   const CartContext = createContext();
 
   const CartContextProvider = ({ children }) => {
-    const { loading, error, data } = useQueryProduct();
-
     const [state, dispatch] = useReducer(reducer, defaultState);
 
     let boundActions = {};
@@ -16,9 +14,7 @@ export const CartContextCreator = (reducer, actions, defaultState) => {
     }
     useEffect(() => {}, []);
     return (
-      <CartContext.Provider
-        value={{ ...state, ...boundActions, loading, error, data }}
-      >
+      <CartContext.Provider value={{ ...state, ...boundActions }}>
         {children}
       </CartContext.Provider>
     );

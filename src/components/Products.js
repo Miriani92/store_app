@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import ProductCard from "./ProdactCard";
 import styles from "./Products.module.css";
 import Loading from "./Loading";
-import { CartContext } from "../context/cartcontext/Cart-actions";
+import SingleProductContext from "../context/singleproductcontext/single-product-context";
 class Products extends Component {
-  static contextType = CartContext;
+  static contextType = SingleProductContext;
   constructor(props) {
     super(props);
   }
