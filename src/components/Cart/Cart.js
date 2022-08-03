@@ -1,17 +1,20 @@
 import React, { Component } from "react";
+import SingleCartItem from "./SingleCartItem";
 import SingleProductContext from "../../context/singleproductcontext/single-product-context";
+import Loading from "../Loading";
 
 class Cart extends Component {
   static contextType = SingleProductContext;
   render() {
-    console.log(this.context.singleProduct);
+    if (this.context.loading) {
+      return <Loading />;
+    }
+    const { singleProduct } = this.context;
     return (
       <div>
-        <h1>Cart</h1>
-        <div>
-          <div></div>
-          <div></div>
-        </div>
+        {singleProduct.map((product) => {
+          return <SingleCartItem {...product} key={product.id} />;
+        })}
       </div>
     );
   }

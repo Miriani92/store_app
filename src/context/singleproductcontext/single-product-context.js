@@ -9,11 +9,24 @@ export const SingleProductProvider = ({ children }) => {
 
   const addToCart = (id) => {
     const product = data.category.products.find((product) => product.id === id);
+    const matchedProductIndex = singleProduct.findIndex(
+      (item) => item.id === id
+    );
+    if (matchedProductIndex === 0) {
+      const copiedList = [...singleProduct];
+      const doubledProduct = copiedList[matchedProductIndex];
+      copiedList[matchedProductIndex] = {
+        ...doubledProduct,
+        value: doubledProduct.value + 1,
+      };
+      return setSingleProduct([...copiedList]);
+    }
+
     setSingleProduct(() => {
-      return { product };
+      console.log();
+      return [...singleProduct, { ...product, value: 1 }];
     });
   };
-
   return (
     <SingleProductContext.Provider
       value={{ data, loading, error, addToCart, singleProduct }}
