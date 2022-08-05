@@ -3,6 +3,7 @@ import ProductCard from "./ProdactCard";
 import styles from "./Products.module.css";
 import Loading from "./Loading";
 import SingleProductContext from "../context/singleproductcontext/single-product-context";
+import renderBasedCategory from "../utils/productsReder";
 class Products extends Component {
   static contextType = SingleProductContext;
   constructor(props) {
@@ -11,7 +12,12 @@ class Products extends Component {
 
   render() {
     if (this.context.loading) return <Loading />;
-    const products = this.context.data.category.products;
+
+    const products = renderBasedCategory(
+      this.context.data.category.products,
+      this.props.category
+    );
+
     return (
       <div className={styles.productswrapper}>
         {products.map((product) => {

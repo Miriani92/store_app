@@ -9,7 +9,8 @@ class All extends Component {
   render() {
     return (
       <main>
-        <Products />;
+        <h2>All</h2>
+        <Products category="all" />;
       </main>
     );
   }
