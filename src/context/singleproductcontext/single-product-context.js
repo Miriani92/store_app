@@ -12,7 +12,8 @@ export const SingleProductProvider = ({ children }) => {
     const matchedProductIndex = singleProduct.findIndex(
       (item) => item.id === id
     );
-    if (matchedProductIndex === 0) {
+
+    if (matchedProductIndex !== -1) {
       const copiedList = [...singleProduct];
       const doubledProduct = copiedList[matchedProductIndex];
       copiedList[matchedProductIndex] = {

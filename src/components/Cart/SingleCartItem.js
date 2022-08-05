@@ -7,10 +7,14 @@ import Gallery from "../Gallery";
 class SingleCartItem extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    this.state = {
+      cuantity: this.props.value,
+    };
   }
 
   render() {
+    console.log(this.props);
+
     return (
       <div className={styles.cartitem}>
         <div>
@@ -22,11 +26,25 @@ class SingleCartItem extends Component {
         <div>
           <div className={styles.buttonswrapper}>
             <div className={styles.buttons}>
-              <button className={styles.plusbtn}>+</button>
+              <button
+                className={styles.plusbtn}
+                onClick={() =>
+                  this.setState({ cuantity: this.state.cuantity + 1 })
+                }
+              >
+                +
+              </button>
               <div>
-                <h3 className={styles.quantity}>1</h3>
+                <h3 className={styles.quantity}>{this.state.cuantity}</h3>
               </div>
-              <button className={styles.minusbtn}>-</button>
+              <button
+                className={styles.minusbtn}
+                onClick={() =>
+                  this.setState({ cuantity: this.state.cuantity - 1 })
+                }
+              >
+                -
+              </button>
             </div>
             <Gallery gallery={this.props.gallery} />
           </div>

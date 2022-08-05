@@ -4,11 +4,10 @@ import styles from "./Size.module.css";
 class Size extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.attributes);
   }
   render() {
+    if (!this.props.attributes[0]) return <div></div>;
     const { name, items } = this.props.attributes[0];
-    console.log(items);
     return (
       <div>
         <h1>{name}</h1>
