@@ -6,16 +6,31 @@ class Size extends Component {
     super(props);
   }
   render() {
-    if (!this.props.attributes[0]) return <div></div>;
-    const { name, items } = this.props.attributes[0];
+    console.log(this.props.attributes);
+    if (!this.props.attributes.length === 0) return "";
+    // const { name, items } = this.props.attributes[0];
     return (
       <div>
-        <h1>{name}</h1>
-        {items.map((item) => {
+        {this.props.attributes.map((attr, index) => {
+          const { name } = attr;
           return (
-            <button key={item.id} className={styles.button}>
-              {item.value}
-            </button>
+            <div key={index}>
+              <h1>{name}</h1>
+              {attr.items.map((item) => {
+                return (
+                  <button
+                    key={item.id}
+                    className={styles.button}
+                    style={{
+                      backgroundColor:
+                        attr.type === "swatch" && `${item.value}`,
+                    }}
+                  >
+                    {attr.type !== "swatch" && item.value}
+                  </button>
+                );
+              })}
+            </div>
           );
         })}
       </div>
