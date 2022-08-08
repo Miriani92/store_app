@@ -1,0 +1,40 @@
+.cartitem {
+  display: flex;
+  justify-content: space-between;
+}
+.buttonswrapper {
+  display: flex;
+}
+.buttons {
+  position: relative;
+  line-height: 290px;
+  margin-right: 60px;
+}
+
+.plusbtn {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.minusbtn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 25px;
+  cursor: pointer;
+}
+.buttons > div {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  left: 50%;
+  text-align: center;
+}

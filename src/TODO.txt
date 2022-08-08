@@ -1,1 +1,9 @@
-changed 
+
+   TO-DO   
+   
+   // we made api call got currencies and we pass this currency data as the value after ---- we need to consume this in the currency component and then render  after------
+   we send the chosen option in the context save the data in the state and we distribute this state.
+
+
+
+

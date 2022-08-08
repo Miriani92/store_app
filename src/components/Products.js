@@ -2,16 +2,22 @@ import React, { Component } from "react";
 import ProductCard from "./ProdactCard";
 import styles from "./Products.module.css";
 import Loading from "./Loading";
-import { CartContext } from "../context/Cart-actions";
+import SingleProductContext from "../context/singleproductcontext/single-product-context";
+import renderBasedCategory from "../utils/productsReder";
 class Products extends Component {
-  static contextType = CartContext;
+  static contextType = SingleProductContext;
   constructor(props) {
     super(props);
   }
 
   render() {
     if (this.context.loading) return <Loading />;
-    const products = this.context.data.category.products;
+
+    const products = renderBasedCategory(
+      this.context.data.category.products,
+      this.props.category
+    );
+
     return (
       <div className={styles.productswrapper}>
         {products.map((product) => {

@@ -4,12 +4,12 @@ import styles from "./Header.module.css";
 import { BsCurrencyDollar, BsCart } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import logo from "../assets/logo.png";
-import { CartContext } from "../context/Cart-actions";
+import { CartContext } from "../context/cartcontext/Cart-actions";
 
 class Header extends Component {
   static contextType = CartContext;
   render() {
-    const { taggleCart } = this.context;
+    const { taggleCart, togglecurrencies } = this.context;
 
     return (
       <nav className={styles.nav}>
@@ -51,7 +51,7 @@ class Header extends Component {
             <BsCurrencyDollar />
           </div>
           <div>
-            <button className={styles.arrowbutton}>
+            <button className={styles.arrowbutton} onClick={togglecurrencies}>
               <MdKeyboardArrowDown />
             </button>
           </div>

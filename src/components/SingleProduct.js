@@ -1,26 +1,29 @@
 import React, { Component } from "react";
 import styles from "./SingleProduct.module.css";
 import Loading from "./Loading";
-import { CartContext } from "../context/Cart-actions";
+import SingleProductContext from "../context/singleproductcontext/single-product-context";
+import Attributes from "../UI/Attributes";
 import { withRouter } from "react-router";
 
 class SingleProduct extends Component {
-  static contextType = CartContext;
+  static contextType = SingleProductContext;
   constructor(props) {
     super(props);
-    this.state = {};
-    console.log(this.props.match.params.id);
+
+    this.changeImgIdx = this.changeImgIdx.bind(this);
+    this.state = { imageIDX: 0 };
   }
 
   componentDidMount() {
+    if (this.context.loading) return <Loading />;
     const { data, loading, error } = this.context;
-
-    if (loading) return <Loading />;
 
     const product = data.category.products.find(
       (product) => product.id === this.props.match.params.id
     );
+
     this.setState({
+      id: product.id,
       name: product.name,
       brand: product.brand,
       category: product.category,
@@ -28,23 +31,65 @@ class SingleProduct extends Component {
       gallery: product.gallery,
       inStock: product.inStock,
       prices: product.prices,
+      attributes: product.attributes,
     });
   }
+
+  changeImgIdx(index) {
+    this.setState({ imageIDX: index });
+  }
+
   render() {
-    const { name, brand, category, description, gallery, inStock, prices } =
-      this.state;
+    const {
+      name,
+      brand,
+      category,
+      description,
+      gallery,
+      inStock,
+      prices,
+      attributes,
+    } = this.state;
+    const { addToCart } = this.context;
     return (
-      <div>
-        <h1>{name}</h1>
-        <button className={styles.button}>Click and add to the cart</button>
-      </div>
+      <article className={styles.singleproductwrapper}>
+        <div className={styles.gallerywrapper}>
+          <div>
+            {gallery &&
+              gallery.map((image, index) => {
+                return (
+                  <div key={index}>
+                    <button
+                      className={styles.imagebutton}
+                      onClick={() => this.changeImgIdx(index)}
+                    >
+                      <img src={image} className={styles.images} />
+                    </button>
+                  </div>
+                );
+              })}
+          </div>
+          <img src={gallery && gallery[this.state.imageIDX]} />
+        </div>
+        <div>
+          <h1>{name}</h1>
+
+          <h3>{brand}</h3>
+          <h4>{category}</h4>
+          {attributes && <Attributes attributes={attributes} />}
+          <h3>Price:</h3>
+          <p>$50</p>
+          <button
+            className={styles.button}
+            onClick={() => addToCart(this.props.match.params.id)}
+          >
+            ADD TO CART
+          </button>
+          <div dangerouslySetInnerHTML={{ __html: `${description}` }}></div>
+        </div>
+      </article>
     );
   }
 }
 
 export default withRouter(SingleProduct);
-
-// priority applay the fetched single product to the to the state
-
-// when we click button we must send info
-// --- onClick --->context

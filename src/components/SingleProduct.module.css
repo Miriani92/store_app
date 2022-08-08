@@ -1,6 +1,29 @@
+.singleproductwrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 .button {
   all: unset;
+  width: 200px;
+  height: 50px;
+  background-color: aqua;
+  cursor: pointer;
+  text-align: center;
+}
+.images {
+  object-fit: cover;
   width: 100px;
   height: 100px;
-  background-color: aqua;
+}
+.imagebutton {
+  all: unset;
+  cursor: pointer;
+}
+.gallerywrapper {
+  display: flex;
+}
+
+.imagewrapper {
+  display: block;
 }

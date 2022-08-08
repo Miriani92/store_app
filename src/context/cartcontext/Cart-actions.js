@@ -1,7 +1,8 @@
 import { TOGGLE_CART } from "./Cart-action-constats";
 import { CartContextCreator } from "./Cart-context";
+import { TOGGLE_CURRENCIES } from "./Cart-action-constats";
 
-const defaultState = { isCartOpen: false };
+const defaultState = { isCartOpen: false, iseCurrenciesOpen: "false" };
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -10,16 +11,11 @@ const reducer = (state, action) => {
         ...state,
         isCartOpen: !state.isCartOpen,
       };
-    // case Get_SINGLE_PRODUCT:
-    //   const products = data.category.products;
-    //   console.log(state);
-    //   return {
-    //     ...state,
-    //     singleProduct: products.find(
-    //       (product) => product.id === action.payload
-    //     ),
-    //   };
-
+    case TOGGLE_CURRENCIES:
+      return {
+        ...state,
+        iseCurrenciesOpen: !state.iseCurrenciesOpen,
+      };
     default:
       return { ...state };
   }
@@ -31,14 +27,14 @@ const taggleCart = (dispatch) => {
   };
 };
 
-// const getSingleProduct = (dispatch) => {
-//   return (id) => {
-//     dispatch({ type: Get_SINGLE_PRODUCT, payload: id });
-//   };
-// };
+const togglecurrencies = (dispatch) => {
+  return () => {
+    dispatch({ type: TOGGLE_CURRENCIES });
+  };
+};
 
 export const { CartContextProvider, CartContext } = CartContextCreator(
   reducer,
-  { taggleCart },
+  { taggleCart, togglecurrencies },
   defaultState
 );
