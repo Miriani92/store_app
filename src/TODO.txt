@@ -1,2 +1,1 @@
-to -do create single page for the pruduct and 
-do the button add to cart and then deal with the cart logic
+this is for github purpose 
