@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import styles from "./Size.module.css";
+import styles from "./Attributes.module.css";
 
-class Size extends Component {
+class Attributes extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    console.log(this.props.attributes);
-    if (!this.props.attributes.length === 0) return "";
-    // const { name, items } = this.props.attributes[0];
+    if (!this.props.attributes.length === 0) return null;
     return (
       <div>
         {this.props.attributes.map((attr, index) => {
@@ -38,4 +36,4 @@ class Size extends Component {
   }
 }
 
-export default Size;
+export default Attributes;

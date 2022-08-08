@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./SingleCartItem.module.css";
-import Size from "../../UI/Size";
+import Attributes from "../../UI/Attributes";
 // import Colors from "../../UI/Colors";
 import Gallery from "../Gallery";
 
@@ -19,7 +19,7 @@ class SingleCartItem extends Component {
           <h1>{this.props.name}</h1>
           <h1>{this.props.category}</h1>
           <p>$50</p>
-          <Size attributes={this.props.attributes} />
+          <Attributes attributes={this.props.attributes} />
         </div>
         <div>
           <div className={styles.buttonswrapper}>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./SingleProduct.module.css";
 import Loading from "./Loading";
 import SingleProductContext from "../context/singleproductcontext/single-product-context";
+import Attributes from "../UI/Attributes";
 import { withRouter } from "react-router";
 
 class SingleProduct extends Component {
@@ -12,13 +13,13 @@ class SingleProduct extends Component {
   }
 
   componentDidMount() {
+    if (this.context.loading) return <Loading />;
     const { data, loading, error } = this.context;
-
-    if (loading) return <Loading />;
 
     const product = data.category.products.find(
       (product) => product.id === this.props.match.params.id
     );
+    console.log(product);
     this.setState({
       id: product.id,
       name: product.name,
@@ -28,15 +29,27 @@ class SingleProduct extends Component {
       gallery: product.gallery,
       inStock: product.inStock,
       prices: product.prices,
+      attributes: product.attributes,
     });
   }
   render() {
-    const { name, brand, category, description, gallery, inStock, prices } =
-      this.state;
+    const {
+      name,
+      brand,
+      category,
+      description,
+      gallery,
+      inStock,
+      prices,
+      attributes,
+    } = this.state;
     const { addToCart } = this.context;
     return (
       <div>
         <h1>{name}</h1>
+        {attributes && <Attributes attributes={attributes} />}
+        <h3>Price:</h3>
+        <p>$50</p>
         <button
           className={styles.button}
           onClick={() => addToCart(this.props.match.params.id)}

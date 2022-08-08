@@ -1,3 +1,5 @@
    TO-DO   
-   the color render bug fix  
+    // single product attributes issue
+   1. do the single item render
+   2 . need to pick the color and size and maintint int the cart bag the chosen color and size
 
