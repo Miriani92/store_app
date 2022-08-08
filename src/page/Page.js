@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import Header from "../components/Header";
 import Routes from "../routes/storeRoutes";
 import CartBag from "../components/Cart/Cart-bag";
+import Currencies from "../components/Currencies";
 import { CartContext } from "../context/cartcontext/Cart-actions";
 
 class Page extends Component {
   static contextType = CartContext;
   render() {
-    const { isCartOpen } = this.context;
+    const { isCartOpen, iseCurrenciesOpen } = this.context;
 
     return (
       <div>
         <Header />
-        {isCartOpen ? <CartBag /> : null}
+        {iseCurrenciesOpen && <Currencies />}
+        {isCartOpen && <CartBag />}
         <Routes />
       </div>
     );

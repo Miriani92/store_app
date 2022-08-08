@@ -1,5 +1,7 @@
    TO-DO   
-    // single product attributes issue
-   1. do the single item render
-   2 . need to pick the color and size and maintint int the cart bag the chosen color and size
+   
+   // we made api call got currencies and we pass this currency data as the value after ---- we need to consume this in the currency component and then render  after------
+   we send the chosen option in the context save the data in the state and we distribute this state.
+
+
 

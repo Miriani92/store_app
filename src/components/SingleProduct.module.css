@@ -20,3 +20,10 @@
   all: unset;
   cursor: pointer;
 }
+.gallerywrapper {
+  display: flex;
+}
+
+.imagewrapper {
+  display: block;
+}

@@ -1,10 +1,11 @@
 import React, { useState, createContext, useEffect } from "react";
 import useQueryProduct from "../../hooks/useQueryProduct";
-
+import useCurrencies from "../../hooks/useCurrencies";
 const SingleProductContext = createContext();
 
 export const SingleProductProvider = ({ children }) => {
   const { loading, error, data } = useQueryProduct();
+  const { currencies } = useCurrencies();
   const [singleProduct, setSingleProduct] = useState([]);
 
   const addToCart = (id) => {
@@ -30,7 +31,7 @@ export const SingleProductProvider = ({ children }) => {
   };
   return (
     <SingleProductContext.Provider
-      value={{ data, loading, error, addToCart, singleProduct }}
+      value={{ data, loading, error, addToCart, singleProduct, currencies }}
     >
       {children}
     </SingleProductContext.Provider>

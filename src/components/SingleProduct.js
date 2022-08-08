@@ -9,7 +9,9 @@ class SingleProduct extends Component {
   static contextType = SingleProductContext;
   constructor(props) {
     super(props);
-    this.state = {};
+
+    this.changeImgIdx = this.changeImgIdx.bind(this);
+    this.state = { imageIDX: 0 };
   }
 
   componentDidMount() {
@@ -19,7 +21,7 @@ class SingleProduct extends Component {
     const product = data.category.products.find(
       (product) => product.id === this.props.match.params.id
     );
-    console.log(product);
+
     this.setState({
       id: product.id,
       name: product.name,
@@ -32,6 +34,11 @@ class SingleProduct extends Component {
       attributes: product.attributes,
     });
   }
+
+  changeImgIdx(index) {
+    this.setState({ imageIDX: index });
+  }
+
   render() {
     const {
       name,
@@ -46,20 +53,29 @@ class SingleProduct extends Component {
     const { addToCart } = this.context;
     return (
       <article className={styles.singleproductwrapper}>
-        <div>
-          {gallery &&
-            gallery.map((image) => {
-              return (
-                <div>
-                  <button className={styles.imagebutton}>
-                    <img src={image} className={styles.images} />
-                  </button>
-                </div>
-              );
-            })}
+        <div className={styles.gallerywrapper}>
+          <div>
+            {gallery &&
+              gallery.map((image, index) => {
+                return (
+                  <div key={index}>
+                    <button
+                      className={styles.imagebutton}
+                      onClick={() => this.changeImgIdx(index)}
+                    >
+                      <img src={image} className={styles.images} />
+                    </button>
+                  </div>
+                );
+              })}
+          </div>
+          <img src={gallery && gallery[this.state.imageIDX]} />
         </div>
         <div>
           <h1>{name}</h1>
+
+          <h3>{brand}</h3>
+          <h4>{category}</h4>
           {attributes && <Attributes attributes={attributes} />}
           <h3>Price:</h3>
           <p>$50</p>

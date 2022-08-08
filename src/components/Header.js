@@ -9,7 +9,7 @@ import { CartContext } from "../context/cartcontext/Cart-actions";
 class Header extends Component {
   static contextType = CartContext;
   render() {
-    const { taggleCart } = this.context;
+    const { taggleCart, togglecurrencies } = this.context;
 
     return (
       <nav className={styles.nav}>
@@ -51,7 +51,7 @@ class Header extends Component {
             <BsCurrencyDollar />
           </div>
           <div>
-            <button className={styles.arrowbutton}>
+            <button className={styles.arrowbutton} onClick={togglecurrencies}>
               <MdKeyboardArrowDown />
             </button>
           </div>

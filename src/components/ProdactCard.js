@@ -9,6 +9,7 @@ class ProductCard extends Component {
   }
   render() {
     const { name, gallery, id } = this.props;
+
     return (
       <div className={styles.productWrapper}>
         <Link to={`singleproduct/${id}`} className={styles.button} />
