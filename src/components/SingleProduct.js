@@ -45,18 +45,33 @@ class SingleProduct extends Component {
     } = this.state;
     const { addToCart } = this.context;
     return (
-      <div>
-        <h1>{name}</h1>
-        {attributes && <Attributes attributes={attributes} />}
-        <h3>Price:</h3>
-        <p>$50</p>
-        <button
-          className={styles.button}
-          onClick={() => addToCart(this.props.match.params.id)}
-        >
-          ADD TO CART
-        </button>
-      </div>
+      <article className={styles.singleproductwrapper}>
+        <div>
+          {gallery &&
+            gallery.map((image) => {
+              return (
+                <div>
+                  <button className={styles.imagebutton}>
+                    <img src={image} className={styles.images} />
+                  </button>
+                </div>
+              );
+            })}
+        </div>
+        <div>
+          <h1>{name}</h1>
+          {attributes && <Attributes attributes={attributes} />}
+          <h3>Price:</h3>
+          <p>$50</p>
+          <button
+            className={styles.button}
+            onClick={() => addToCart(this.props.match.params.id)}
+          >
+            ADD TO CART
+          </button>
+          <div dangerouslySetInnerHTML={{ __html: `${description}` }}></div>
+        </div>
+      </article>
     );
   }
 }
