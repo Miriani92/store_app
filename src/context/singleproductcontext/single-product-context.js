@@ -7,6 +7,7 @@ export const SingleProductProvider = ({ children }) => {
   const { loading, error, data } = useQueryProduct();
   const { currencies } = useCurrencies();
   const [singleProduct, setSingleProduct] = useState([]);
+  const [chosenCurrencyInd, setChosenCurrencyInd] = useState(0);
 
   const addToCart = (id) => {
     const product = data.category.products.find((product) => product.id === id);
@@ -25,13 +26,26 @@ export const SingleProductProvider = ({ children }) => {
     }
 
     setSingleProduct(() => {
-      console.log();
       return [...singleProduct, { ...product, value: 1 }];
     });
   };
+
+  const changeCurrencyOption = (ind) => {
+    setChosenCurrencyInd(ind);
+  };
+
   return (
     <SingleProductContext.Provider
-      value={{ data, loading, error, addToCart, singleProduct, currencies }}
+      value={{
+        data,
+        loading,
+        error,
+        addToCart,
+        singleProduct,
+        currencies,
+        changeCurrencyOption,
+        chosenCurrencyInd,
+      }}
     >
       {children}
     </SingleProductContext.Provider>

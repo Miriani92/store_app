@@ -17,7 +17,7 @@ class Products extends Component {
       this.context.data.category.products,
       this.props.category
     );
-
+    console.log(this.context.data);
     return (
       <div className={styles.productswrapper}>
         {products.map((product) => {

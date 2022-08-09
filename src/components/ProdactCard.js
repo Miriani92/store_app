@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import styles from "./ProductCard.module.css";
 import { BsCart } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import SingleProductContext from "../context/singleproductcontext/single-product-context";
 
 class ProductCard extends Component {
+  static contextType = SingleProductContext;
   constructor(props) {
     super(props);
   }
   render() {
-    const { name, gallery, id } = this.props;
+    const { name, gallery, id, prices } = this.props;
+    const { chosenCurrencyInd } = this.context;
+    const currencyData = prices[chosenCurrencyInd];
 
     return (
       <div className={styles.productWrapper}>
@@ -19,7 +23,10 @@ class ProductCard extends Component {
           <Link className={styles.cartButton} to="/cart">
             <BsCart />
           </Link>
-          <p>$50</p>
+          <div>
+            <span>{currencyData.currency.symbol}</span>
+            <span>{currencyData.amount}</span>
+          </div>
         </div>
       </div>
     );

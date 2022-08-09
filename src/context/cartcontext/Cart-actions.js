@@ -2,7 +2,7 @@ import { TOGGLE_CART } from "./Cart-action-constats";
 import { CartContextCreator } from "./Cart-context";
 import { TOGGLE_CURRENCIES } from "./Cart-action-constats";
 
-const defaultState = { isCartOpen: false, iseCurrenciesOpen: "false" };
+const defaultState = { isCartOpen: false, iseCurrenciesOpen: false };
 
 const reducer = (state, action) => {
   switch (action.type) {
