@@ -1,5 +1,2 @@
-
-   TO-DO   
-   
-// need to the the same thing in the cartItemcomponent
-
+To Do 
+prices should cnange in the cart bag

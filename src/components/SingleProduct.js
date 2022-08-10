@@ -3,7 +3,9 @@ import styles from "./SingleProduct.module.css";
 import Loading from "./Loading";
 import SingleProductContext from "../context/singleproductcontext/single-product-context";
 import Attributes from "../UI/Attributes";
+import ChoseCurrency from "./ChosenCurrency";
 import { withRouter } from "react-router";
+import Currencies from "./Currencies";
 
 class SingleProduct extends Component {
   static contextType = SingleProductContext;
@@ -50,7 +52,8 @@ class SingleProduct extends Component {
       prices,
       attributes,
     } = this.state;
-    const { addToCart } = this.context;
+    const { addToCart, chosenCurrencyInd } = this.context;
+
     return (
       <article className={styles.singleproductwrapper}>
         <div className={styles.gallerywrapper}>
@@ -73,12 +76,16 @@ class SingleProduct extends Component {
         </div>
         <div>
           <h1>{name}</h1>
-
           <h3>{brand}</h3>
           <h4>{category}</h4>
           {attributes && <Attributes attributes={attributes} />}
           <h3>Price:</h3>
-          <p>$50</p>
+          <div>
+            <ChoseCurrency
+              symbol={prices && prices[chosenCurrencyInd].currency.symbol}
+              amount={prices && prices[chosenCurrencyInd].amount}
+            />
+          </div>
           <button
             className={styles.button}
             onClick={() => addToCart(this.props.match.params.id)}

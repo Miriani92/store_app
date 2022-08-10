@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import styles from "./SingleCartItem.module.css";
 import Attributes from "../../UI/Attributes";
-// import Colors from "../../UI/Colors";
 import Gallery from "../Gallery";
+import ChoseCurrency from "../ChosenCurrency";
+import SingleProductContext from "../../context/singleproductcontext/single-product-context";
 
 class SingleCartItem extends Component {
+  static contextType = SingleProductContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -13,12 +15,25 @@ class SingleCartItem extends Component {
   }
 
   render() {
+    console.log(this.props);
+    const { chosenCurrencyInd } = this.context;
+
     return (
       <div className={styles.cartitem}>
         <div>
           <h1>{this.props.name}</h1>
           <h1>{this.props.category}</h1>
-          <p>$50</p>
+          <div>
+            <ChoseCurrency
+              symbol={
+                this.props.prices &&
+                this.props.prices[chosenCurrencyInd].currency.symbol
+              }
+              amount={
+                this.props.prices && this.props.prices[chosenCurrencyInd].amount
+              }
+            />
+          </div>
           <Attributes attributes={this.props.attributes} />
         </div>
         <div>

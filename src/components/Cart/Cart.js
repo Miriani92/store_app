@@ -15,6 +15,8 @@ class Cart extends Component {
         {singleProduct.map((product) => {
           return <SingleCartItem {...product} key={product.id} />;
         })}
+
+        <h1>thre goes the h1 one</h1>
       </div>
     );
   }

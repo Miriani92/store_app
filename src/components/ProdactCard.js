@@ -3,6 +3,7 @@ import styles from "./ProductCard.module.css";
 import { BsCart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import SingleProductContext from "../context/singleproductcontext/single-product-context";
+import ChoseCurrency from "./ChosenCurrency";
 
 class ProductCard extends Component {
   static contextType = SingleProductContext;
@@ -24,8 +25,10 @@ class ProductCard extends Component {
             <BsCart />
           </Link>
           <div>
-            <span>{currencyData.currency.symbol}</span>
-            <span>{currencyData.amount}</span>
+            <ChoseCurrency
+              symbol={currencyData.currency.symbol}
+              amount={currencyData.amount}
+            />
           </div>
         </div>
       </div>
