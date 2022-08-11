@@ -5,18 +5,19 @@ import Loading from "../Loading";
 
 class Cart extends Component {
   static contextType = SingleProductContext;
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    if (this.context.loading) {
-      return <Loading />;
-    }
-    const { singleProduct } = this.context;
+    const { singleProduct, totalQuantity } = this.context;
+
     return (
       <div>
         {singleProduct.map((product) => {
           return <SingleCartItem {...product} key={product.id} />;
         })}
-
-        <h1>thre goes the h1 one</h1>
+        <h3>{totalQuantity}</h3>
       </div>
     );
   }
