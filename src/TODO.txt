@@ -1,2 +1,13 @@
 To Do 
-prices should cnange in the cart bag
+//problem is that we need to make shore that indivi
+
+
+
+
+
+
+
+
+// we need the the tax percentage
+
+

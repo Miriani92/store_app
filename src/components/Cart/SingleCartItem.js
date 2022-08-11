@@ -9,15 +9,11 @@ class SingleCartItem extends Component {
   static contextType = SingleProductContext;
   constructor(props) {
     super(props);
-    this.state = {
-      cuantity: this.props.value,
-    };
   }
 
   render() {
-    console.log(this.props);
-    const { chosenCurrencyInd } = this.context;
-
+    const { chosenCurrencyInd, countTotalProducts, changeQuantity } =
+      this.context;
     return (
       <div className={styles.cartitem}>
         <div>
@@ -41,20 +37,22 @@ class SingleCartItem extends Component {
             <div className={styles.buttons}>
               <button
                 className={styles.plusbtn}
-                onClick={() =>
-                  this.setState({ cuantity: this.state.cuantity + 1 })
-                }
+                onClick={() => {
+                  changeQuantity(this.props.id, "plus");
+                  countTotalProducts("plus");
+                }}
               >
                 +
               </button>
               <div>
-                <h3 className={styles.quantity}>{this.state.cuantity}</h3>
+                <h3 className={styles.quantity}>{this.props.value}</h3>
               </div>
               <button
                 className={styles.minusbtn}
-                onClick={() =>
-                  this.setState({ cuantity: this.state.cuantity - 1 })
-                }
+                onClick={() => {
+                  changeQuantity(this.props.id, "minus");
+                  countTotalProducts("minus");
+                }}
               >
                 -
               </button>

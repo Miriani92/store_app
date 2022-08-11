@@ -17,12 +17,14 @@ class CartBag extends Component {
     if (this.context.loading) {
       return <Loading />;
     }
-    const { singleProduct } = this.context;
+    const { singleProduct, totalQuantity } = this.context;
     return (
       <div>
         {singleProduct.map((product) => {
           return <SingleCartItem {...product} key={product.id} />;
         })}
+
+        <h3>{totalQuantity}</h3>
       </div>
     );
   }
