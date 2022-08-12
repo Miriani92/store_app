@@ -10,6 +10,7 @@ export const SingleProductProvider = ({ children }) => {
   const [singleProduct, setSingleProduct] = useState([]);
   const [chosenCurrencyInd, setChosenCurrencyInd] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const addToCart = (id) => {
     const product = data.category.products.find((product) => product.id === id);
@@ -25,12 +26,20 @@ export const SingleProductProvider = ({ children }) => {
         value: doubledProduct.value + 1,
       };
       setTotalQuantity(totalQuantity + 1);
+      setTotalPrice(
+        (prevPrice) =>
+          prevPrice +
+          copiedList[matchedProductIndex].prices[chosenCurrencyInd].amount
+      );
       return setSingleProduct([...copiedList]);
     }
 
     setSingleProduct(() => {
       return [...singleProduct, { ...product, value: 1 }];
     });
+    setTotalPrice(
+      (prevPrice) => prevPrice + product.prices[chosenCurrencyInd].amount
+    );
     setTotalQuantity(totalQuantity + 1);
   };
 
@@ -53,14 +62,23 @@ export const SingleProductProvider = ({ children }) => {
     const productIndex = updatedSIngeleProduct.findIndex(
       (product) => product.id === id
     );
-    let product;
     if (action === "plus") {
       updatedSIngeleProduct[productIndex].value =
         updatedSIngeleProduct[productIndex].value + 1;
+      setTotalPrice(
+        (prev) =>
+          prev +
+          updatedSIngeleProduct[productIndex].prices[chosenCurrencyInd].amount
+      );
     }
     if (action === "minus") {
       updatedSIngeleProduct[productIndex].value =
         updatedSIngeleProduct[productIndex].value - 1;
+      setTotalPrice(
+        (prev) =>
+          prev -
+          updatedSIngeleProduct[productIndex].prices[chosenCurrencyInd].amount
+      );
     }
 
     setSingleProduct([...updatedSIngeleProduct]);
@@ -80,6 +98,8 @@ export const SingleProductProvider = ({ children }) => {
         countTotalProducts,
         totalQuantity,
         changeQuantity,
+        totalPrice,
+        // countTotalPrice,
       }}
     >
       {children}

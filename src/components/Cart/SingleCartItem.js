@@ -11,9 +11,23 @@ class SingleCartItem extends Component {
     super(props);
   }
 
+  // shouldComponentUpdate(nextProps) {
+  //   if (nextProps === this.props) return false;
+  //   return true;
+  // }
+
+  // componentDidMount() {
+  //   console.log("hello world")
+  //   this.props.countTotalPrice(
+  //     this.props.value,
+  //     this.props.prices[this.context.chosenCurrencyInd].amount
+  //   );
+  // }
+
   render() {
     const { chosenCurrencyInd, countTotalProducts, changeQuantity } =
       this.context;
+
     return (
       <div className={styles.cartitem}>
         <div>

@@ -1,13 +1,9 @@
 To Do 
-//problem is that we need to make shore that indivi
+  // implement total price in the cart bag
+  // modal overly with cart and cart-bag
+  // whole app styling
+  // adjust data by changing the currency
 
 
-
-
-
-
-
-
-// we need the the tax percentage
 
 
