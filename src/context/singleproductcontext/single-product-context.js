@@ -26,20 +26,13 @@ export const SingleProductProvider = ({ children }) => {
         value: doubledProduct.value + 1,
       };
       setTotalQuantity(totalQuantity + 1);
-      setTotalPrice(
-        (prevPrice) =>
-          prevPrice +
-          copiedList[matchedProductIndex].prices[chosenCurrencyInd].amount
-      );
       return setSingleProduct([...copiedList]);
     }
 
     setSingleProduct(() => {
       return [...singleProduct, { ...product, value: 1 }];
     });
-    setTotalPrice(
-      (prevPrice) => prevPrice + product.prices[chosenCurrencyInd].amount
-    );
+
     setTotalQuantity(totalQuantity + 1);
   };
 
@@ -65,25 +58,20 @@ export const SingleProductProvider = ({ children }) => {
     if (action === "plus") {
       updatedSIngeleProduct[productIndex].value =
         updatedSIngeleProduct[productIndex].value + 1;
-      setTotalPrice(
-        (prev) =>
-          prev +
-          updatedSIngeleProduct[productIndex].prices[chosenCurrencyInd].amount
-      );
     }
     if (action === "minus") {
       updatedSIngeleProduct[productIndex].value =
         updatedSIngeleProduct[productIndex].value - 1;
-      setTotalPrice(
-        (prev) =>
-          prev -
-          updatedSIngeleProduct[productIndex].prices[chosenCurrencyInd].amount
-      );
     }
 
     setSingleProduct([...updatedSIngeleProduct]);
   };
-
+  useEffect(() => {
+    const totalPrice = singleProduct.reduce((total, item) => {
+      return total + item.prices[chosenCurrencyInd].amount * item.value;
+    }, 0);
+    setTotalPrice(totalPrice);
+  }, [singleProduct, chosenCurrencyInd]);
   return (
     <SingleProductContext.Provider
       value={{
@@ -99,7 +87,6 @@ export const SingleProductProvider = ({ children }) => {
         totalQuantity,
         changeQuantity,
         totalPrice,
-        // countTotalPrice,
       }}
     >
       {children}

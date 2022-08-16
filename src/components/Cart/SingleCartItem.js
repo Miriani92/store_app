@@ -53,7 +53,7 @@ class SingleCartItem extends Component {
                 className={styles.plusbtn}
                 onClick={() => {
                   changeQuantity(this.props.id, "plus");
-                  countTotalProducts("plus");
+                  // countTotalProducts("plus");
                 }}
               >
                 +
@@ -65,7 +65,7 @@ class SingleCartItem extends Component {
                 className={styles.minusbtn}
                 onClick={() => {
                   changeQuantity(this.props.id, "minus");
-                  countTotalProducts("minus");
+                  // countTotalProducts("minus");
                 }}
               >
                 -
