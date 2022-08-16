@@ -11,6 +11,7 @@ export const SingleProductProvider = ({ children }) => {
   const [chosenCurrencyInd, setChosenCurrencyInd] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [choseCurrencySymbol, setChoseCurrencySymbol] = useState("$");
 
   const addToCart = (id) => {
     const product = data.category.products.find((product) => product.id === id);
@@ -36,8 +37,10 @@ export const SingleProductProvider = ({ children }) => {
     setTotalQuantity(totalQuantity + 1);
   };
 
-  const changeCurrencyOption = (ind) => {
-    setChosenCurrencyInd(ind);
+  const changeCurrencyOption = (value) => {
+    const symbol = value.length === 4 ? value[2] + value[3] : value[2];
+    setChosenCurrencyInd(parseInt(value[0]));
+    setChoseCurrencySymbol(symbol);
   };
 
   const countTotalProducts = (action) => {
@@ -72,6 +75,7 @@ export const SingleProductProvider = ({ children }) => {
     }, 0);
     setTotalPrice(totalPrice);
   }, [singleProduct, chosenCurrencyInd]);
+  console.log(choseCurrencySymbol);
   return (
     <SingleProductContext.Provider
       value={{
@@ -87,6 +91,7 @@ export const SingleProductProvider = ({ children }) => {
         totalQuantity,
         changeQuantity,
         totalPrice,
+        choseCurrencySymbol,
       }}
     >
       {children}

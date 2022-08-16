@@ -7,12 +7,15 @@ import { CartContext } from "../context/cartcontext/Cart-actions";
 
 class Page extends Component {
   static contextType = CartContext;
+  constructor(props) {
+    super(props);
+  }
   render() {
     const { isCartOpen, iseCurrenciesOpen } = this.context;
 
     return (
       <div>
-        <Header />
+        <Header symbol={this.props.symbol} />
         {iseCurrenciesOpen && <Currencies />}
         {isCartOpen && <CartBag />}
         <Routes />

@@ -8,6 +8,10 @@ import { CartContext } from "../context/cartcontext/Cart-actions";
 
 class Header extends Component {
   static contextType = CartContext;
+
+  constructor(props) {
+    super(props);
+  }
   render() {
     const { taggleCart, togglecurrencies } = this.context;
 
@@ -47,9 +51,7 @@ class Header extends Component {
         </ul>
         <img src={logo} className={styles.logo} />
         <div className={styles.cartsection}>
-          <div>
-            <BsCurrencyDollar />
-          </div>
+          <div>{this.props.symbol}</div>
           <div>
             <button className={styles.arrowbutton} onClick={togglecurrencies}>
               <MdKeyboardArrowDown />

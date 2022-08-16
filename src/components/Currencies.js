@@ -18,11 +18,11 @@ class Currencies extends Component {
         <select
           name="currencies"
           id="currencies-select"
-          onChange={(e) => changeCurrencyOption(parseInt(e.target.value))}
+          onChange={(e) => changeCurrencyOption(e.target.value)}
         >
           {currencies.map((currency, ind) => {
             return (
-              <option key={currency.label} value={ind}>
+              <option key={currency.label} value={[ind, currency.symbol]}>
                 {currency.symbol} {currency.label}
               </option>
             );
