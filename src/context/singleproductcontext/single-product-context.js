@@ -63,6 +63,13 @@ export const SingleProductProvider = ({ children }) => {
         updatedSIngeleProduct[productIndex].value + 1;
     }
     if (action === "minus") {
+      if (updatedSIngeleProduct[productIndex].value === 1) {
+        const updatedSingle = updatedSIngeleProduct.filter(
+          (item) => item.id !== updatedSIngeleProduct[productIndex].id
+        );
+
+        return setSingleProduct([...updatedSingle]);
+      }
       updatedSIngeleProduct[productIndex].value =
         updatedSIngeleProduct[productIndex].value - 1;
     }

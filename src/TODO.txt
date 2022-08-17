@@ -1,6 +1,7 @@
 To Do 
   
-
+  // when choosing currency aftee the taggle it goes back to dollar -- bug 
+  // we need to product dissepier after clickinng when the value is 1
   
 
 

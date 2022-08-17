@@ -11,19 +11,6 @@ class SingleCartItem extends Component {
     super(props);
   }
 
-  // shouldComponentUpdate(nextProps) {
-  //   if (nextProps === this.props) return false;
-  //   return true;
-  // }
-
-  // componentDidMount() {
-  //   console.log("hello world")
-  //   this.props.countTotalPrice(
-  //     this.props.value,
-  //     this.props.prices[this.context.chosenCurrencyInd].amount
-  //   );
-  // }
-
   render() {
     const { chosenCurrencyInd, countTotalProducts, changeQuantity } =
       this.context;
@@ -53,7 +40,7 @@ class SingleCartItem extends Component {
                 className={styles.plusbtn}
                 onClick={() => {
                   changeQuantity(this.props.id, "plus");
-                  // countTotalProducts("plus");
+                  countTotalProducts("plus");
                 }}
               >
                 +
@@ -65,7 +52,7 @@ class SingleCartItem extends Component {
                 className={styles.minusbtn}
                 onClick={() => {
                   changeQuantity(this.props.id, "minus");
-                  // countTotalProducts("minus");
+                  countTotalProducts("minus");
                 }}
               >
                 -
