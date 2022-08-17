@@ -10,6 +10,7 @@ class Page extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     const { isCartOpen, iseCurrenciesOpen } = this.context;
 

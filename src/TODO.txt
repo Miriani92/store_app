@@ -1,13 +1,7 @@
 To Do 
-  
-  // when choosing currency aftee the taggle it goes back to dollar -- bug 
-  // we need to product dissepier after clickinng when the value is 1
-  
-
-
-
-
+ 
   // implement total price in the cart bag
+  // attrubutes should be selectable
   // modal overly with cart and cart-bag
   // whole app styling
  

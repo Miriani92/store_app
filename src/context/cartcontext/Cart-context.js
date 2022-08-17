@@ -11,7 +11,7 @@ export const CartContextCreator = (reducer, actions, defaultState) => {
     for (const key in actions) {
       boundActions[key] = actions[key](dispatch);
     }
-    useEffect(() => {}, []);
+
     return (
       <CartContext.Provider value={{ ...state, ...boundActions }}>
         {children}

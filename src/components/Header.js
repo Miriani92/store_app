@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
-import { BsCurrencyDollar, BsCart } from "react-icons/bs";
+import { BsCart } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import logo from "../assets/logo.png";
 import { CartContext } from "../context/cartcontext/Cart-actions";
@@ -19,34 +19,19 @@ class Header extends Component {
       <nav className={styles.nav}>
         <ul>
           <li>
-            <Link
-              to="/"
-              // className={({ isActive }) =>
-              //   isActive ? styles.active : undefined
-              // }
-            >
+            <NavLink exact to="/" activeClassName={styles.active}>
               ALL
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              to="/clothes"
-              // className={({ isActive }) =>
-              //   isActive ? styles.active : undefined
-              // }
-            >
+            <NavLink to="/clothes" activeClassName={styles.active}>
               CLOTHES
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              to="/tech"
-              // className={({ isActive }) =>
-              //   isActive ? styles.active : undefined
-              // }
-            >
+            <NavLink to="/tech" activeClassName={styles.active}>
               TECH
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <img src={logo} className={styles.logo} />

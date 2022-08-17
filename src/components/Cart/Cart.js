@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SingleCartItem from "./SingleCartItem";
 import SingleProductContext from "../../context/singleproductcontext/single-product-context";
-import Loading from "../Loading";
 
 class Cart extends Component {
   static contextType = SingleProductContext;
@@ -11,21 +10,16 @@ class Cart extends Component {
   }
 
   render() {
-    const { singleProduct, totalQuantity, totalPrice } = this.context;
+    const { singleProduct, totalQuantity, totalPrice, choseCurrencySymbol } =
+      this.context;
 
     return (
       <div>
         {singleProduct.map((product) => {
-          return (
-            <SingleCartItem
-              {...product}
-              key={product.id}
-              // countTotalPrice={countTotalPrice}
-            />
-          );
+          return <SingleCartItem {...product} key={product.id} />;
         })}
-        <h3>Tax 21%: {(totalPrice * 21) / 100}</h3>
-        <h3>{totalPrice}</h3>
+        <h3>Tax 21%: {choseCurrencySymbol + (totalPrice * 21) / 100}</h3>
+        <h3>{choseCurrencySymbol + totalPrice}</h3>
         <h3>{totalQuantity}</h3>
       </div>
     );

@@ -5,12 +5,16 @@ import SingleProductContext from "../context/singleproductcontext/single-product
 
 class Currencies extends Component {
   static contextType = SingleProductContext;
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     if (this.context.Loading) return <Loading />;
     const {
       currencies: { currencies },
       changeCurrencyOption,
+      chosenCurrencyInd,
     } = this.context;
 
     return (
@@ -18,11 +22,14 @@ class Currencies extends Component {
         <select
           name="currencies"
           id="currencies-select"
-          onChange={(e) => changeCurrencyOption(e.target.value)}
+          defaultValue={chosenCurrencyInd}
+          onChange={(e) => {
+            changeCurrencyOption(e.target.value);
+          }}
         >
           {currencies.map((currency, ind) => {
             return (
-              <option key={currency.label} value={[ind, currency.symbol]}>
+              <option key={currency.label} value={ind}>
                 {currency.symbol} {currency.label}
               </option>
             );

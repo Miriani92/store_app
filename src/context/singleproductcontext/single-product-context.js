@@ -38,9 +38,12 @@ export const SingleProductProvider = ({ children }) => {
   };
 
   const changeCurrencyOption = (value) => {
-    const symbol = value.length === 4 ? value[2] + value[3] : value[2];
-    setChosenCurrencyInd(parseInt(value[0]));
-    setChoseCurrencySymbol(symbol);
+    const ind = parseInt(value);
+    setChosenCurrencyInd(ind);
+    const symbol = currencies.currencies[ind].symbol;
+    localStorage.setItem("symbol", symbol);
+
+    setChoseCurrencySymbol(localStorage.getItem("symbol"));
   };
 
   const countTotalProducts = (action) => {
@@ -82,7 +85,7 @@ export const SingleProductProvider = ({ children }) => {
     }, 0);
     setTotalPrice(totalPrice);
   }, [singleProduct, chosenCurrencyInd]);
-  console.log(choseCurrencySymbol);
+
   return (
     <SingleProductContext.Provider
       value={{
