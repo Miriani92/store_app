@@ -1,6 +1,5 @@
 To Do 
- 
-  // implement total price in the cart bag
+
   // attrubutes should be selectable
   // modal overly with cart and cart-bag
   // whole app styling
