@@ -7,6 +7,9 @@
   height: 80px;
   background-color: #ffffff;
   padding: 28px 117px 32px;
+  z-index: 100;
+  position: sticky;
+  top: 0;
 }
 .nav > ul {
   display: flex;
@@ -54,12 +57,12 @@ nav > ul > li .active {
   width: 35px;
   height: 35px;
 }
-.arrowbutton {
-  all: unset;
-  cursor: pointer;
-  border: none;
-}
+
 .cartButton {
   border: none;
   cursor: pointer;
 }
+
+/* .currencies {
+
+} */

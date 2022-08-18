@@ -1,7 +1,6 @@
 To Do 
-
+   // postion the currencies
   // attrubutes should be selectable
-  // modal overly with cart and cart-bag
   // whole app styling
  
 

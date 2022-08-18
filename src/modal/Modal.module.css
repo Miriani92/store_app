@@ -2,12 +2,13 @@
   background: rgb(95, 159, 95);
   width: 330px;
   height: 700px;
-  position: absolute;
+  position: fixed;
   border: 1px solid green;
   left: 65%;
-  z-index: 15;
-  top: 80px;
-  z-index: 10;
+  /* margin-top: 80px; */
+  top: 0;
+  z-index: 20;
+  cursor: pointer;
 }
 
 .background {
@@ -17,6 +18,5 @@
   position: fixed;
   top: 80px;
   left: 0;
-  cursor: pointer;
-  z-index: 9;
+  z-index: 10;
 }

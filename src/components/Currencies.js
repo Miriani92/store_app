@@ -18,7 +18,7 @@ class Currencies extends Component {
     } = this.context;
 
     return (
-      <div>
+      <div className={styles.currencyWrapper}>
         <select
           name="currencies"
           id="currencies-select"
