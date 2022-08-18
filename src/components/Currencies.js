@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styles from "./Currencies.module.css";
-import Loading from "./Loading";
 import SingleProductContext from "../context/singleproductcontext/single-product-context";
 
 class Currencies extends Component {
@@ -10,31 +9,30 @@ class Currencies extends Component {
   }
 
   render() {
-    if (this.context.Loading) return <Loading />;
     const {
       currencies: { currencies },
       changeCurrencyOption,
-      chosenCurrencyInd,
     } = this.context;
 
     return (
       <div className={styles.currencyWrapper}>
-        <select
-          name="currencies"
-          id="currencies-select"
-          defaultValue={chosenCurrencyInd}
-          onChange={(e) => {
-            changeCurrencyOption(e.target.value);
-          }}
-        >
+        <div className={styles.buttonWrapper}>
           {currencies.map((currency, ind) => {
             return (
-              <option key={currency.label} value={ind}>
-                {currency.symbol} {currency.label}
-              </option>
+              <div key={currency.label} onClick={this.props.changeCurrency}>
+                <button
+                  value={ind}
+                  onClick={(e) => {
+                    changeCurrencyOption(e.target.value);
+                  }}
+                  className={styles.button}
+                >
+                  {currency.symbol} {currency.label}
+                </button>
+              </div>
             );
           })}
-        </select>
+        </div>
       </div>
     );
   }

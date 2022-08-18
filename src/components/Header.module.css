@@ -57,12 +57,12 @@ nav > ul > li .active {
   width: 35px;
   height: 35px;
 }
-
+.arrowbutton {
+  all: unset;
+  cursor: pointer;
+  border: none;
+}
 .cartButton {
   border: none;
   cursor: pointer;
 }
-
-/* .currencies {
-
-} */
