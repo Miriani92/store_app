@@ -1,35 +1,25 @@
 import React, { Component } from "react";
 import styles from "./Item.module.css";
+import SingleProductContext from "../context/singleproductcontext/single-product-context";
 
 class Item extends Component {
+  static contextType = SingleProductContext;
   constructor(props) {
     super(props);
-    this.state = {
-      addClass: localStorage.getItem(this.props.item.value)
-        ? localStorage.getItem(this.props.item.value)
-        : "no",
-    };
   }
-  chooseAttribute() {
-    if (localStorage.getItem(this.props.item.value) === "yes") {
-      localStorage.removeItem(this.props.item.value);
-    } else {
-      localStorage.setItem(this.props.item.value, "yes");
-    }
-    this.setState({
-      addClass: localStorage.getItem(this.props.item.value),
-    });
-  }
+
   render() {
+    const { chosenAttribute } = this.context;
+
     return (
       <button
         key={this.props.item.id}
         className={
-          this.state.addClass === "yes"
-            ? `${styles.button} ${styles.add}`
+          chosenAttribute[this.props.index] === this.props.item.value
+            ? ` ${styles.button} ${styles.add} `
             : styles.button
         }
-        onClick={() => this.chooseAttribute()}
+        onClick={() => this.props.chooseAttribute()}
         style={{
           backgroundColor:
             this.props.attr.type === "swatch" && `${this.props.item.value}`,

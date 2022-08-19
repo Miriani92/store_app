@@ -12,6 +12,7 @@ export const SingleProductProvider = ({ children }) => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [choseCurrencySymbol, setChoseCurrencySymbol] = useState("$");
+  const [chosenAttribute, setChosenAttribute] = useState({});
 
   const addToCart = (id) => {
     const product = data.category.products.find((product) => product.id === id);
@@ -79,6 +80,12 @@ export const SingleProductProvider = ({ children }) => {
 
     setSingleProduct([...updatedSIngeleProduct]);
   };
+
+  const chooseAttribute = (index, attribute) => {
+    setChosenAttribute(() => {
+      return { ...chosenAttribute, [index]: attribute };
+    });
+  };
   useEffect(() => {
     const totalPrice = singleProduct.reduce((total, item) => {
       return total + item.prices[chosenCurrencyInd].amount * item.value;
@@ -102,6 +109,8 @@ export const SingleProductProvider = ({ children }) => {
         changeQuantity,
         totalPrice,
         choseCurrencySymbol,
+        chooseAttribute,
+        chosenAttribute,
       }}
     >
       {children}

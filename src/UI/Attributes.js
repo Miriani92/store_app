@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import styles from "./Attributes.module.css";
 import Item from "./Item";
+import SingleProductContext from "../context/singleproductcontext/single-product-context";
 
 class Attributes extends Component {
+  static contextType = SingleProductContext;
   constructor(props) {
     super(props);
   }
@@ -10,6 +12,7 @@ class Attributes extends Component {
   render() {
     if (!this.props.attributes.length === 0) return null;
 
+    const { chooseAttribute } = this.context;
     return (
       <div>
         {this.props.attributes.map((attr, index) => {
@@ -18,7 +21,19 @@ class Attributes extends Component {
             <div key={index}>
               <h1>{name}</h1>
               {attr.items.map((item, ind) => {
-                return <Item key={ind} item={item} attr={attr} />;
+                return (
+                  <Item
+                    key={ind}
+                    item={item}
+                    attr={attr}
+                    index={index}
+                    chooseAttribute={chooseAttribute.bind(
+                      null,
+                      index,
+                      item.value
+                    )}
+                  />
+                );
               })}
             </div>
           );
