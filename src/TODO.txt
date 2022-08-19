@@ -1,8 +1,12 @@
 To Do 
-   // postion the currencies
-  // attrubutes should be selectable
+   
+  
   // whole app styling
  
+
+
+
+
 
 
 

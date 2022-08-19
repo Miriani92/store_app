@@ -1,4 +1,4 @@
-/* .button {
+.button {
   all: unset;
   border: 1px solid black;
   height: 45px;
@@ -8,5 +8,6 @@
   text-align: center;
 }
 .add {
-  border: 2px solid red;
-} */
+  border: none;
+  outline: 2px solid red;
+}
