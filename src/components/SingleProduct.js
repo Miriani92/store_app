@@ -72,15 +72,17 @@ class SingleProduct extends Component {
                 );
               })}
           </div>
-          <img src={gallery && gallery[this.state.imageIDX]} />
         </div>
+        <img
+          className={styles.mainImage}
+          src={gallery && gallery[this.state.imageIDX]}
+        />
         <div>
           <h1>{name}</h1>
-          <h3>{brand}</h3>
-          <h4>{category}</h4>
+          <h1 className={styles.brand}>{brand}</h1>
           {attributes && <Attributes attributes={attributes} />}
-          <h3>Price:</h3>
-          <div>
+          <h4 className={styles.price}>PRICE:</h4>
+          <div className={styles.priceWrapper}>
             <ChoseCurrency
               symbol={prices && prices[chosenCurrencyInd].currency.symbol}
               amount={prices && prices[chosenCurrencyInd].amount}

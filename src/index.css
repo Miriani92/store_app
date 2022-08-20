@@ -8,4 +8,7 @@
 
 body {
   background-color: white;
+  margin: 0 auto;
+  width: 90%;
+  padding-bottom: 80px;
 }

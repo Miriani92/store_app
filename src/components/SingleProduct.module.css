@@ -10,6 +10,8 @@
   background-color: aqua;
   cursor: pointer;
   text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .images {
   object-fit: cover;
@@ -26,4 +28,26 @@
 
 .imagewrapper {
   display: block;
+}
+
+.mainImage {
+  object-fit: cover;
+  width: 500px;
+  height: 500px;
+}
+.priceWrapper {
+  margin-top: 30px;
+}
+.price {
+  margin-top: 45px;
+}
+.brand {
+  font-weight: 400;
+}
+
+@media screen and (max-width: 880px) {
+  .mainImage {
+    width: 400px;
+    height: 400px;
+  }
 }

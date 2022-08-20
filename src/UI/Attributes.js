@@ -14,12 +14,12 @@ class Attributes extends Component {
 
     const { chooseAttribute } = this.context;
     return (
-      <div>
+      <div className={styles.attributes}>
         {this.props.attributes.map((attr, index) => {
           const { name } = attr;
           return (
             <div key={index}>
-              <h1>{name}</h1>
+              <h4>{name.toUpperCase()}</h4>
               {attr.items.map((item, ind) => {
                 return (
                   <Item

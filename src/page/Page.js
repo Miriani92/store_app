@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Header from "../components/Header";
 import Routes from "../routes/storeRoutes";
 import CartBag from "../components/Cart/Cart-bag";
-// import Currencies from "../components/Currencies";
 import { CartContext } from "../context/cartcontext/Cart-actions";
 
 class Page extends Component {
@@ -17,7 +16,6 @@ class Page extends Component {
     return (
       <div>
         <Header symbol={this.props.symbol} />
-
         {isCartOpen && <CartBag />}
         <Routes />
       </div>
