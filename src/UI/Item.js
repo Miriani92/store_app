@@ -10,13 +10,18 @@ class Item extends Component {
 
   render() {
     const { chosenAttribute } = this.context;
+    const cartBag = this.props.cartBag;
 
     return (
       <button
         key={this.props.item.id}
         className={
           chosenAttribute[this.props.index] === this.props.item.value
-            ? ` ${styles.button} ${styles.add} `
+            ? ` ${styles.button} ${cartBag && styles["cart-button"]} ${
+                styles.add
+              } `
+            : cartBag
+            ? `${styles.button} ${styles["cart-button"]}`
             : styles.button
         }
         onClick={() => this.props.chooseAttribute()}

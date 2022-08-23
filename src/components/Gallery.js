@@ -27,9 +27,23 @@ class Gallery extends Component {
   }
 
   render() {
+    const cartBag = this.props.cartBag;
+
     return (
-      <div className={styles.gallery}>
-        <div className={styles.buttonwrapper}>
+      <div
+        className={
+          cartBag
+            ? `${styles.gallery} ${styles["bag-gallery"]}`
+            : styles.gallery
+        }
+      >
+        <div
+          className={
+            cartBag
+              ? `${styles.buttonwrapper} ${styles["bag-buttonwrapper"]}`
+              : styles.buttonwrapper
+          }
+        >
           <button onClick={() => this.slider("prev")}>
             <MdNavigateBefore />
           </button>
@@ -39,7 +53,9 @@ class Gallery extends Component {
         </div>
         <img
           src={this.props.gallery[this.state.index]}
-          className={styles.image}
+          className={
+            cartBag ? `${styles.image} ${styles["bag-image"]}` : styles.image
+          }
         ></img>
       </div>
     );

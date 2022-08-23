@@ -13,13 +13,20 @@ class Attributes extends Component {
     if (!this.props.attributes.length === 0) return null;
 
     const { chooseAttribute } = this.context;
+
+    const cartBag = this.props.cartBag;
     return (
       <div className={styles.attributes}>
         {this.props.attributes.map((attr, index) => {
           const { name } = attr;
           return (
             <div key={index}>
-              <h4>{name.toUpperCase()}</h4>
+              <h4
+                className={cartBag && styles["bag-name"]}
+                style={{ marginBottom: "10px" }}
+              >
+                {name.toUpperCase()}:
+              </h4>
               {attr.items.map((item, ind) => {
                 return (
                   <Item
@@ -27,6 +34,7 @@ class Attributes extends Component {
                     item={item}
                     attr={attr}
                     index={index}
+                    cartBag={cartBag}
                     chooseAttribute={chooseAttribute.bind(
                       null,
                       index,

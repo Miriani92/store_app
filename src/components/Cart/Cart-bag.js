@@ -22,9 +22,11 @@ class CartBag extends Component {
       this.context;
     return (
       <Modal>
-        <div>
+        <div className={styles.carbag}>
           {singleProduct.map((product) => {
-            return <SingleCartItem {...product} key={product.id} />;
+            return (
+              <SingleCartItem {...product} key={product.id} cartBag="cartBag" />
+            );
           })}
 
           <h3>{totalQuantity}</h3>

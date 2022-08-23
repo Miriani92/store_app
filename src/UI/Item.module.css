@@ -1,6 +1,6 @@
 .button {
   all: unset;
-  border: 1px solid black;
+  outline: 1px solid black;
   height: 45px;
   width: 63px;
   cursor: pointer;
@@ -10,5 +10,12 @@
 }
 .add {
   border: none;
-  outline: 2px solid red;
+  background-color: black;
+  color: white;
+  outline: 2px solid black;
+}
+.cart-button {
+  width: 35px;
+  height: 35px;
+  font-size: 16;
 }

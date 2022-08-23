@@ -14,12 +14,19 @@ class SingleCartItem extends Component {
   render() {
     const { chosenCurrencyInd, countTotalProducts, changeQuantity } =
       this.context;
+    const cartBag = this.props.cartBag;
 
     return (
-      <div className={styles.cartitem}>
+      <div
+        className={
+          cartBag
+            ? `${styles.cartitem} ${styles["bag-cartitem"]}`
+            : styles.cartitem
+        }
+      >
         <div>
-          <h1>{this.props.name}</h1>
-          <h1>{this.props.category}</h1>
+          <h1 className={cartBag && styles["bag-name"]}>{this.props.name}</h1>
+          <h1>{!cartBag && this.props.category}</h1>
           <div>
             <ChoseCurrency
               symbol={
@@ -29,15 +36,32 @@ class SingleCartItem extends Component {
               amount={
                 this.props.prices && this.props.prices[chosenCurrencyInd].amount
               }
+              cartBag={cartBag}
             />
           </div>
-          <Attributes attributes={this.props.attributes} />
+          <Attributes attributes={this.props.attributes} cartBag={cartBag} />
         </div>
         <div>
-          <div className={styles.buttonswrapper}>
-            <div className={styles.buttons}>
+          <div
+            className={
+              cartBag
+                ? `${styles.buttonswrapper} ${styles["bag-buttonswrapper"]}`
+                : styles.buttonswrapper
+            }
+          >
+            <div
+              className={
+                cartBag
+                  ? `${styles.buttons} ${styles["bag-buttons"]}`
+                  : styles.buttons
+              }
+            >
               <button
-                className={styles.plusbtn}
+                className={
+                  cartBag
+                    ? `${styles.plusbtn} ${styles["bag-plusbtn"]}`
+                    : styles.plusbtn
+                }
                 onClick={() => {
                   changeQuantity(this.props.id, "plus");
                   countTotalProducts("plus");
@@ -46,10 +70,22 @@ class SingleCartItem extends Component {
                 +
               </button>
               <div>
-                <h3 className={styles.quantity}>{this.props.value}</h3>
+                <h3
+                  className={
+                    cartBag
+                      ? `${styles.quantity} ${styles["bag-quantity"]}`
+                      : styles.quantity
+                  }
+                >
+                  {this.props.value}
+                </h3>
               </div>
               <button
-                className={styles.minusbtn}
+                className={
+                  cartBag
+                    ? `${styles.minusbtn} ${styles["bag-minusbtn"]}`
+                    : styles.minusbtn
+                }
                 onClick={() => {
                   changeQuantity(this.props.id, "minus");
                   countTotalProducts("minus");
@@ -58,7 +94,7 @@ class SingleCartItem extends Component {
                 -
               </button>
             </div>
-            <Gallery gallery={this.props.gallery} />
+            <Gallery gallery={this.props.gallery} cartBag={cartBag} />
           </div>
         </div>
       </div>

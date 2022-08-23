@@ -1,7 +1,7 @@
 .overlay {
   background: rgb(95, 159, 95);
   width: 330px;
-  height: 700px;
+  min-height: 700px;
   position: fixed;
   border: 1px solid green;
   left: 65%;

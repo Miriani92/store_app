@@ -1,4 +1,5 @@
 .cartitem {
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
 }
@@ -16,9 +17,9 @@
   top: 0;
   left: 50%;
   width: 45px;
-  height: 45px;
   font-size: 25px;
   cursor: pointer;
+  line-height: 45px;
   z-index: 10;
 }
 
@@ -27,8 +28,8 @@
   bottom: 0;
   left: 50%;
   width: 45px;
-  height: 45px;
   font-size: 25px;
+  line-height: 45px;
   cursor: pointer;
 }
 .buttons > div {
@@ -37,4 +38,28 @@
   height: 45px;
   left: 50%;
   text-align: center;
+}
+
+.bag-minusbtn,
+.bag-plusbtn {
+  width: 30px;
+  font-size: 20px;
+  line-height: 30px;
+}
+.bag-buttons {
+  line-height: 120px;
+  margin-right: 40px;
+}
+.bag-cartitem {
+  padding: 10% 5%;
+}
+
+.bag-quantity {
+  text-align: start;
+  font-size: 16px;
+  padding-left: 10px;
+}
+.bag-name {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
