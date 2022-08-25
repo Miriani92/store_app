@@ -13,8 +13,8 @@ class Attributes extends Component {
     if (!this.props.attributes.length === 0) return null;
 
     const { chooseAttribute } = this.context;
-
     const cartBag = this.props.cartBag;
+
     return (
       <div className={styles.attributes}>
         {this.props.attributes.map((attr, index) => {
@@ -35,11 +35,7 @@ class Attributes extends Component {
                     attr={attr}
                     index={index}
                     cartBag={cartBag}
-                    chooseAttribute={chooseAttribute.bind(
-                      null,
-                      index,
-                      item.value
-                    )}
+                    chooseAttribute={chooseAttribute}
                   />
                 );
               })}

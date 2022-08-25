@@ -5,7 +5,6 @@ import SingleProductContext from "../context/singleproductcontext/single-product
 import Attributes from "../UI/Attributes";
 import ChoseCurrency from "./ChosenCurrency";
 import { withRouter } from "react-router";
-import Currencies from "./Currencies";
 
 class SingleProduct extends Component {
   static contextType = SingleProductContext;
