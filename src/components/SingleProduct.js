@@ -15,7 +15,11 @@ class SingleProduct extends Component {
     this.state = { imageIDX: 0 };
   }
 
-  componentDidMount() {
+  changeImgIdx(index) {
+    this.setState({ imageIDX: index });
+  }
+
+  render() {
     if (this.context.loading) return <Loading />;
     const { data, loading, error } = this.context;
 
@@ -23,42 +27,14 @@ class SingleProduct extends Component {
       (product) => product.id === this.props.match.params.id
     );
 
-    this.setState({
-      id: product.id,
-      name: product.name,
-      brand: product.brand,
-      category: product.category,
-      description: product.description,
-      gallery: product.gallery,
-      inStock: product.inStock,
-      prices: product.prices,
-      attributes: product.attributes,
-    });
-  }
-
-  changeImgIdx(index) {
-    this.setState({ imageIDX: index });
-  }
-
-  render() {
-    const {
-      name,
-      brand,
-      category,
-      description,
-      gallery,
-      inStock,
-      prices,
-      attributes,
-    } = this.state;
     const { addToCart, chosenCurrencyInd } = this.context;
 
     return (
       <article className={styles.singleproductwrapper}>
         <div className={styles.gallerywrapper}>
           <div>
-            {gallery &&
-              gallery.map((image, index) => {
+            {product.gallery &&
+              product.gallery.map((image, index) => {
                 return (
                   <div key={index}>
                     <button
@@ -74,19 +50,24 @@ class SingleProduct extends Component {
         </div>
         <img
           className={styles.mainImage}
-          src={gallery && gallery[this.state.imageIDX]}
+          src={product.gallery && product.gallery[this.state.imageIDX]}
         />
         <div>
-          <h1>{name}</h1>
-          <h1 className={styles.brand}>{brand}</h1>
-          {attributes && (
-            <Attributes attributes={attributes} id={this.state.id} />
+          <h1>{product.name}</h1>
+          <h1 className={styles.brand}>{product.brand}</h1>
+          {product.attributes && (
+            <Attributes attributes={product.attributes} id={product.id} />
           )}
           <h4 className={styles.price}>PRICE:</h4>
           <div className={styles.priceWrapper}>
             <ChoseCurrency
-              symbol={prices && prices[chosenCurrencyInd].currency.symbol}
-              amount={prices && prices[chosenCurrencyInd].amount}
+              symbol={
+                product.prices &&
+                product.prices[chosenCurrencyInd].currency.symbol
+              }
+              amount={
+                product.prices && product.prices[chosenCurrencyInd].amount
+              }
             />
           </div>
           <button
@@ -95,7 +76,9 @@ class SingleProduct extends Component {
           >
             ADD TO CART
           </button>
-          <div dangerouslySetInnerHTML={{ __html: `${description}` }}></div>
+          <div
+            dangerouslySetInnerHTML={{ __html: `${product.description}` }}
+          ></div>
         </div>
       </article>
     );
