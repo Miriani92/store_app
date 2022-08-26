@@ -79,7 +79,9 @@ class SingleProduct extends Component {
         <div>
           <h1>{name}</h1>
           <h1 className={styles.brand}>{brand}</h1>
-          {attributes && <Attributes attributes={attributes} />}
+          {attributes && (
+            <Attributes attributes={attributes} id={this.state.id} />
+          )}
           <h4 className={styles.price}>PRICE:</h4>
           <div className={styles.priceWrapper}>
             <ChoseCurrency

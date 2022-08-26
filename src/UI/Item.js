@@ -16,7 +16,9 @@ class Item extends Component {
       <button
         key={this.props.item.id}
         className={
-          chosenAttribute[this.props.index] === this.props.item.value
+          chosenAttribute[this.props.productId] &&
+          chosenAttribute[this.props.productId][this.props.index] ===
+            this.props.item.value
             ? ` ${styles.button} ${cartBag && styles["cart-button"]} ${
                 styles.add
               } `
@@ -24,7 +26,13 @@ class Item extends Component {
             ? `${styles.button} ${styles["cart-button"]}`
             : styles.button
         }
-        onClick={() => this.props.chooseAttribute()}
+        onClick={() =>
+          this.props.chooseAttribute(
+            this.props.index,
+            this.props.item.value,
+            this.props.productId
+          )
+        }
         style={{
           backgroundColor:
             this.props.attr.type === "swatch" && `${this.props.item.value}`,

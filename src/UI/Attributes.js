@@ -34,6 +34,7 @@ class Attributes extends Component {
                     item={item}
                     attr={attr}
                     index={index}
+                    productId={this.props.id}
                     cartBag={cartBag}
                     chooseAttribute={chooseAttribute}
                   />

@@ -81,11 +81,15 @@ export const SingleProductProvider = ({ children }) => {
     setSingleProduct([...updatedSIngeleProduct]);
   };
 
-  const chooseAttribute = (index, attribute) => {
+  const chooseAttribute = (index, attribute, productId) => {
     setChosenAttribute(() => {
-      return { ...chosenAttribute, [index]: attribute };
+      return {
+        ...chosenAttribute,
+        [productId]: { ...chosenAttribute[productId], [index]: attribute },
+      };
     });
   };
+
   useEffect(() => {
     const totalPrice = singleProduct.reduce((total, item) => {
       return total + item.prices[chosenCurrencyInd].amount * item.value;
