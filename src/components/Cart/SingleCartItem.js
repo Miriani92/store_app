@@ -39,7 +39,11 @@ class SingleCartItem extends Component {
               cartBag={cartBag}
             />
           </div>
-          <Attributes attributes={this.props.attributes} cartBag={cartBag} />
+          <Attributes
+            attributes={this.props.attributes}
+            id={this.props.id}
+            cartBag={cartBag}
+          />
         </div>
         <div>
           <div

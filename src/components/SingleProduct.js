@@ -10,7 +10,6 @@ class SingleProduct extends Component {
   static contextType = SingleProductContext;
   constructor(props) {
     super(props);
-
     this.changeImgIdx = this.changeImgIdx.bind(this);
     this.state = { imageIDX: 0 };
   }
