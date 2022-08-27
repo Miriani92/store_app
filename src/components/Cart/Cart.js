@@ -18,8 +18,10 @@ class Cart extends Component {
         {singleProduct.map((product) => {
           return <SingleCartItem {...product} key={product.id} />;
         })}
-        <h3>Tax 21%: {choseCurrencySymbol + (totalPrice * 21) / 100}</h3>
-        <h3>{choseCurrencySymbol + totalPrice}</h3>
+        <h3>
+          Tax 21%: {choseCurrencySymbol + ((totalPrice * 21) / 100).toFixed(2)}
+        </h3>
+        <h3>{choseCurrencySymbol + totalPrice.toFixed(2)}</h3>
         <h3>{totalQuantity}</h3>
       </div>
     );
