@@ -62,6 +62,23 @@ nav > ul > li .active {
   border: none;
 }
 .cartButton {
+  position: relative;
   border: none;
   cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  background: none;
+}
+.cartButton > div {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: black;
+  font-size: 11px;
+  color: white;
+  top: -7px;
+  right: -7px;
+  line-height: 14px;
+  text-align: center;
 }

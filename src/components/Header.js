@@ -46,11 +46,10 @@ class Header extends Component {
               <Currencies changeCurrency={togglecurrencies} />
             )}
           </div>
-          <div>
-            <button className={styles.cartButton} onClick={() => taggleCart()}>
-              <BsCart />
-            </button>
-          </div>
+          <button className={styles.cartButton} onClick={() => taggleCart()}>
+            <BsCart />
+            <div>{this.props.totalItems}</div>
+          </button>
         </div>
       </nav>
     );

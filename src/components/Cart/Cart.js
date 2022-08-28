@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import SingleCartItem from "./SingleCartItem";
+import styles from "./Cart.module.css";
+import Button from "../../UI/Button";
 import SingleProductContext from "../../context/singleproductcontext/single-product-context";
 
 class Cart extends Component {
@@ -14,15 +16,34 @@ class Cart extends Component {
       this.context;
 
     return (
-      <div>
+      <div className={styles.cart}>
+        <h1>Cart</h1>
+        <div className={styles.line}></div>
         {singleProduct.map((product) => {
           return <SingleCartItem {...product} key={product.id} />;
         })}
         <h3>
-          Tax 21%: {choseCurrencySymbol + ((totalPrice * 21) / 100).toFixed(2)}
+          Tax 21%:
+          <span>
+            {choseCurrencySymbol + ((totalPrice * 21) / 100).toFixed(2)}
+          </span>
         </h3>
-        <h3>{choseCurrencySymbol + totalPrice.toFixed(2)}</h3>
-        <h3>{totalQuantity}</h3>
+        <h3>
+          Quantity: <span>{totalQuantity}</span>
+        </h3>
+        <h3>
+          Total: <span>{choseCurrencySymbol + totalPrice.toFixed(2)}</span>{" "}
+        </h3>
+        <Button
+          text="ORDER"
+          style={{
+            width: 280,
+            height: 45,
+            backgroundColor: "green",
+            color: "white",
+            marginTop: 20,
+          }}
+        />
       </div>
     );
   }

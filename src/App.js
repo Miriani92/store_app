@@ -5,7 +5,12 @@ import SingleProductContext from "./context/singleproductcontext/single-product-
 class App extends Component {
   static contextType = SingleProductContext;
   render() {
-    return <Page symbol={this.context.choseCurrencySymbol} />;
+    return (
+      <Page
+        symbol={this.context.choseCurrencySymbol}
+        totalItems={this.context.totalQuantity}
+      />
+    );
   }
 }
 

@@ -1,14 +1,2 @@
 To Do
-  //  app styling
- 
-
-
-
-
-
-
-
-
-
-
-
+// cart component bug

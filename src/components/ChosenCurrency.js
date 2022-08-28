@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./ChosenCurrency.module.css";
 
 class ChoseCurrency extends Component {
   constructor(props) {
@@ -8,8 +9,9 @@ class ChoseCurrency extends Component {
   render() {
     return (
       <>
-        <span>{this.props.symbol}</span>
-        <span>{this.props.amount}</span>
+        <span className={this.props.cartBag && styles["cart-currency"]}>
+          {this.props.symbol + this.props.amount}
+        </span>
       </>
     );
   }

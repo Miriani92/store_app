@@ -24,14 +24,19 @@ class CartBag extends Component {
     return (
       <Modal>
         <div className={styles.cartbag}>
+          <h3 className={styles.quantity}>
+            My Bag. <span>{totalQuantity} items</span>
+          </h3>
           {singleProduct.map((product) => {
             return (
               <SingleCartItem {...product} key={product.id} cartBag="cartBag" />
             );
           })}
           <div className={styles.price}>
-            <h3>Total</h3>
-            <h4> {choseCurrencySymbol + totalPrice.toFixed(2)}</h4>
+            <h3 className={styles.total}>Total</h3>
+            <h4 style={{ fontSize: 14 }}>
+              {choseCurrencySymbol + totalPrice.toFixed(2)}
+            </h4>
           </div>
           <div className={styles.buttons}>
             <Button text="VIEW BAG" />

@@ -25,9 +25,9 @@ class SingleCartItem extends Component {
         }
       >
         <div>
-          <h1 className={cartBag && styles["bag-name"]}>{this.props.name}</h1>
-          <h1>{!cartBag && this.props.category}</h1>
-          <div>
+          <h2 className={cartBag && styles["bag-name"]}>{this.props.name}</h2>
+          <h2 style={{ fontWeight: 500 }}>{!cartBag && this.props.category}</h2>
+          <div className={styles.currency}>
             <ChoseCurrency
               symbol={
                 this.props.prices &&
