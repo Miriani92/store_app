@@ -16,7 +16,7 @@ class Modal extends Component {
     return ReactDOM.createPortal(
       <React.Fragment>
         <div className={styles.background} onClick={taggleCart}></div>
-        <div className={styles.overlay}>{this.props.children}</div>
+        <div>{this.props.children}</div>
       </React.Fragment>,
       modalRoot
     );

@@ -14,7 +14,9 @@ class Cart extends Component {
   render() {
     const { singleProduct, totalQuantity, totalPrice, choseCurrencySymbol } =
       this.context;
-
+    if (totalPrice == 0) {
+      return <div className={styles.noitems}> No items in the cart</div>;
+    }
     return (
       <div className={styles.cart}>
         <h1>Cart</h1>

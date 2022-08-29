@@ -12,19 +12,29 @@ class CartBag extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cuantity: this.props.value,
+      maxHeight: window.innerHeight,
     };
   }
-  render() {
-    if (this.context.loading) {
-      return <Loading />;
+
+  componentDidMount() {
+    let clientHeight = document.getElementById("cart-bag").clientHeight;
+    let windowHeight = window.innerHeight;
+    console.log(clientHeight);
+    if (clientHeight >= windowHeight) {
+      this.setState({ overflow: "scroll", width: 340 });
     }
+  }
+
+  render() {
     const { singleProduct, totalQuantity, totalPrice, choseCurrencySymbol } =
       this.context;
+
     return (
       <Modal>
-        <div className={styles.cartbag}>
-          <h3 className={styles.quantity}>
+        <div className={styles.cartbag} id="cart-bag" style={this.state}>
+          <h3
+            className={totalPrice !== 0 ? styles.quantity : styles.centerText}
+          >
             My Bag. <span>{totalQuantity} items</span>
           </h3>
           {singleProduct.map((product) => {
@@ -32,13 +42,15 @@ class CartBag extends Component {
               <SingleCartItem {...product} key={product.id} cartBag="cartBag" />
             );
           })}
-          <div className={styles.price}>
+          <div className={totalPrice !== 0 ? styles.price : styles.displaynone}>
             <h3 className={styles.total}>Total</h3>
             <h4 style={{ fontSize: 14 }}>
               {choseCurrencySymbol + totalPrice.toFixed(2)}
             </h4>
           </div>
-          <div className={styles.buttons}>
+          <div
+            className={totalPrice !== 0 ? styles.buttons : styles.displaynone}
+          >
             <Button text="VIEW BAG" />
             <Button
               text="CHECK OUT"
