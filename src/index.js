@@ -7,16 +7,19 @@ import { ApolloProvider } from "@apollo/client";
 import { client } from "./api/apolloClient";
 import { CartContextProvider } from "./context/cartcontext/Cart-actions";
 import { SingleProductProvider } from "./context/singleproductcontext/single-product-context";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <CartContextProvider>
-      <SingleProductProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </SingleProductProvider>
-    </CartContextProvider>
-  </ApolloProvider>,
+  <ErrorBoundary>
+    <ApolloProvider client={client}>
+      <CartContextProvider>
+        <SingleProductProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </SingleProductProvider>
+      </CartContextProvider>
+    </ApolloProvider>
+  </ErrorBoundary>,
   document.getElementById("root")
 );
