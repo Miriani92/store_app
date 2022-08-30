@@ -1,8 +1,9 @@
 .productswrapper {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1800px;
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   grid-template-rows: repeat(auto-fit, 450px);
+  gap: 50px;
 }

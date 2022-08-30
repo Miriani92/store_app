@@ -76,6 +76,7 @@ class SingleProduct extends Component {
             ADD TO CART
           </button>
           <div
+            className={styles.description}
             dangerouslySetInnerHTML={{ __html: `${product.description}` }}
           ></div>
         </div>
