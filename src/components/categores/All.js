@@ -3,10 +3,6 @@ import styles from "./All.module.css";
 import Products from "../Products";
 
 class All extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <main>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styles from "./Cart-bag.module.css";
 import Button from "../../UI/Button";
-import Loading from "../Loading";
 import Modal from "../../modal/Modal";
 import SingleProductContext from "../../context/singleproductcontext/single-product-context";
 import SingleCartItem from "./SingleCartItem";
@@ -19,7 +18,6 @@ class CartBag extends Component {
   componentDidMount() {
     let clientHeight = document.getElementById("cart-bag").clientHeight;
     let windowHeight = window.innerHeight;
-    console.log(clientHeight);
     if (clientHeight >= windowHeight) {
       this.setState({ overflow: "scroll", width: 340 });
     }

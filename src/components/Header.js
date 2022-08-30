@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 import { BsCart } from "react-icons/bs";
 import { MdKeyboardArrowUp } from "react-icons/md";
@@ -10,9 +10,6 @@ import { CartContext } from "../context/cartcontext/Cart-actions";
 class Header extends Component {
   static contextType = CartContext;
 
-  constructor(props) {
-    super(props);
-  }
   render() {
     const { taggleCart, iseCurrenciesOpen, togglecurrencies } = this.context;
 
@@ -35,7 +32,7 @@ class Header extends Component {
             </NavLink>
           </li>
         </ul>
-        <img src={logo} className={styles.logo} />
+        <img src={logo} className={styles.logo} alt="logo" />
         <div className={styles.cartsection}>
           <div>
             <span>{this.props.symbol}</span>

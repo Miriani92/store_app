@@ -7,9 +7,7 @@ const modalRoot = document.getElementById("modal-root");
 
 class Modal extends Component {
   static contextType = CartContext;
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     const taggleCart = this.context.taggleCart;
 

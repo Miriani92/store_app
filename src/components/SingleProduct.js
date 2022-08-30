@@ -20,7 +20,7 @@ class SingleProduct extends Component {
 
   render() {
     if (this.context.loading) return <Loading />;
-    const { data, loading, error } = this.context;
+    const { data } = this.context;
 
     const product = data.category.products.find(
       (product) => product.id === this.props.match.params.id

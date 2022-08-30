@@ -22,7 +22,6 @@ class ErrorBoundary extends React.Component {
         </h1>
       );
     }
-
     return this.props.children;
   }
 }
