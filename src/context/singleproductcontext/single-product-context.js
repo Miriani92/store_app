@@ -18,9 +18,12 @@ export const SingleProductProvider = ({ children }) => {
   const addToCart = (id) => {
     const product = data.category.products.find((product) => product.id === id);
     const selcetedAttr = predefineAttribute(id, product.attributes);
-    setChosenAttribute((state) => {
-      return { ...state, ...selcetedAttr };
-    });
+    if (!chosenAttribute.hasOwnProperty(id)) {
+      setChosenAttribute((state) => {
+        return { ...state, ...selcetedAttr };
+      });
+    }
+
     const matchedProductIndex = singleProduct.findIndex(
       (item) => item.id === id
     );

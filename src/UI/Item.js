@@ -11,12 +11,7 @@ class Item extends Component {
   render() {
     const { chosenAttribute } = this.context;
     const cartBag = this.props.cartBag;
-    let attribute;
-    if (Object.keys(chosenAttribute).length === 0) {
-      attribute = this.props.selectedAttribute;
-    } else {
-      attribute = chosenAttribute;
-    }
+    let attribute = { ...this.props.selectedAttribute, ...chosenAttribute };
 
     return (
       <button

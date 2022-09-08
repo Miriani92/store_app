@@ -4,7 +4,6 @@ import Attributes from "../../UI/Attributes";
 import Gallery from "../Gallery";
 import ChoseCurrency from "../ChosenCurrency";
 import SingleProductContext from "../../context/singleproductcontext/single-product-context";
-import { predefineAttribute } from "../../utils/predefinedAttribute";
 
 class SingleCartItem extends Component {
   static contextType = SingleProductContext;
@@ -16,10 +15,6 @@ class SingleCartItem extends Component {
     const { chosenCurrencyInd, countTotalProducts, changeQuantity } =
       this.context;
     const cartBag = this.props.cartBag;
-    const selectedAttribute = predefineAttribute(
-      this.props.id,
-      this.props.attributes
-    );
 
     return (
       <div
@@ -45,7 +40,6 @@ class SingleCartItem extends Component {
             />
           </div>
           <Attributes
-            selectedAttribute={selectedAttribute}
             attributes={this.props.attributes}
             id={this.props.id}
             cartBag={cartBag}
