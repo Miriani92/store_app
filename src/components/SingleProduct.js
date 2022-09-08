@@ -79,7 +79,12 @@ class SingleProduct extends Component {
             />
           </div>
           <button
-            className={styles.button}
+            className={
+              product.inStock
+                ? styles.button
+                : `${styles.button} ${styles.disableBtn}`
+            }
+            disabled={!product.inStock && true}
             onClick={() => addToCart(this.props.match.params.id)}
           >
             ADD TO CART
