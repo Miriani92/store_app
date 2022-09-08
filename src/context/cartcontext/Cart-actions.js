@@ -10,11 +10,13 @@ const reducer = (state, action) => {
       return {
         ...state,
         isCartOpen: !state.isCartOpen,
+        iseCurrenciesOpen: state.iseCurrenciesOpen && !state.iseCurrenciesOpen,
       };
     case TOGGLE_CURRENCIES:
       return {
         ...state,
         iseCurrenciesOpen: !state.iseCurrenciesOpen,
+        isCartOpen: state.isCartOpen && !state.isCartOpen,
       };
     default:
       return { ...state };

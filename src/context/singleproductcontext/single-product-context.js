@@ -1,6 +1,7 @@
 import React, { useState, createContext, useEffect } from "react";
 import useQueryProduct from "../../hooks/useQueryProduct";
 import useCurrencies from "../../hooks/useCurrencies";
+import { predefineAttribute } from "../../utils/predefinedAttribute";
 
 const SingleProductContext = createContext();
 
@@ -16,6 +17,10 @@ export const SingleProductProvider = ({ children }) => {
 
   const addToCart = (id) => {
     const product = data.category.products.find((product) => product.id === id);
+    const selcetedAttr = predefineAttribute(id, product.attributes);
+    setChosenAttribute((state) => {
+      return { ...state, ...selcetedAttr };
+    });
     const matchedProductIndex = singleProduct.findIndex(
       (item) => item.id === id
     );
@@ -81,7 +86,12 @@ export const SingleProductProvider = ({ children }) => {
     setSingleProduct([...updatedSIngeleProduct]);
   };
 
-  const chooseAttribute = (index, attribute, productId) => {
+  const chooseAttribute = (index, attribute, productId, selected = null) => {
+    if (selected) {
+      setChosenAttribute(() => {
+        return { ...chosenAttribute, ...selected };
+      });
+    }
     setChosenAttribute(() => {
       return {
         ...chosenAttribute,
@@ -96,7 +106,7 @@ export const SingleProductProvider = ({ children }) => {
     }, 0);
     setTotalPrice(totalPrice);
   }, [singleProduct, chosenCurrencyInd]);
-
+  console.log(chosenAttribute);
   return (
     <SingleProductContext.Provider
       value={{

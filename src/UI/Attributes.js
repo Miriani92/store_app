@@ -31,6 +31,7 @@ class Attributes extends Component {
                 return (
                   <Item
                     key={ind}
+                    selectedAttribute={this.props.selectedAttribute}
                     item={item}
                     attr={attr}
                     index={index}

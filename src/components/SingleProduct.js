@@ -4,6 +4,7 @@ import Loading from "./Loading";
 import SingleProductContext from "../context/singleproductcontext/single-product-context";
 import Attributes from "../UI/Attributes";
 import ChoseCurrency from "./ChosenCurrency";
+import { predefineAttribute } from "../utils/predefinedAttribute";
 import { withRouter } from "react-router";
 
 class SingleProduct extends Component {
@@ -24,6 +25,10 @@ class SingleProduct extends Component {
 
     const product = data.category.products.find(
       (product) => product.id === this.props.match.params.id
+    );
+    const selectedAttribute = predefineAttribute(
+      product.id,
+      product.attributes
     );
 
     const { addToCart, chosenCurrencyInd } = this.context;
@@ -55,7 +60,11 @@ class SingleProduct extends Component {
           <h1>{product.name}</h1>
           <h1 className={styles.brand}>{product.brand}</h1>
           {product.attributes && (
-            <Attributes attributes={product.attributes} id={product.id} />
+            <Attributes
+              attributes={product.attributes}
+              id={product.id}
+              selectedAttribute={selectedAttribute}
+            />
           )}
           <h4 className={styles.price}>PRICE:</h4>
           <div className={styles.priceWrapper}>

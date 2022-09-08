@@ -1,4 +1,9 @@
 .allCategory {
   margin-top: 80px;
   margin-bottom: 80px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 160%;
 }

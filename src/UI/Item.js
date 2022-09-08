@@ -11,13 +11,19 @@ class Item extends Component {
   render() {
     const { chosenAttribute } = this.context;
     const cartBag = this.props.cartBag;
+    let attribute;
+    if (Object.keys(chosenAttribute).length === 0) {
+      attribute = this.props.selectedAttribute;
+    } else {
+      attribute = chosenAttribute;
+    }
 
     return (
       <button
         key={this.props.item.id}
         className={
-          chosenAttribute[this.props.productId] &&
-          chosenAttribute[this.props.productId][this.props.index] ===
+          attribute[this.props.productId] &&
+          attribute[this.props.productId][this.props.index] ===
             this.props.item.value
             ? ` ${styles.button} ${cartBag && styles["cart-button"]} ${
                 styles.add
