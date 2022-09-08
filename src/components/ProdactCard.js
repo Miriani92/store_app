@@ -11,18 +11,24 @@ class ProductCard extends Component {
     super(props);
   }
   render() {
-    const { name, gallery, id, prices } = this.props;
+    const { name, gallery, id, prices, inStock } = this.props;
     const { chosenCurrencyInd, addToCart } = this.context;
     const currencyData = prices[chosenCurrencyInd];
 
     return (
-      <div className={styles.productWrapper}>
+      <div
+        className={
+          inStock
+            ? styles.productWrapper
+            : `${styles.productWrapper} ${styles.outofstack}`
+        }
+      >
         <Link to={`singleproduct/${id}`} className={styles.button} />
         <div className={styles.wrapper}>
           <img src={gallery[0]} className={styles.img} />
           <p>{name}</p>
           <Link
-            className={styles.cartButton}
+            className={inStock ? styles.cartButton : styles.disableBtn}
             to="/cart"
             onClick={() => addToCart(id)}
           >

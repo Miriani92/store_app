@@ -109,7 +109,7 @@ export const SingleProductProvider = ({ children }) => {
     }, 0);
     setTotalPrice(totalPrice);
   }, [singleProduct, chosenCurrencyInd]);
-  console.log(chosenAttribute);
+
   return (
     <SingleProductContext.Provider
       value={{
