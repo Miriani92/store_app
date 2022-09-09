@@ -89,12 +89,7 @@ export const SingleProductProvider = ({ children }) => {
     setSingleProduct([...updatedSIngeleProduct]);
   };
 
-  const chooseAttribute = (index, attribute, productId, selected = null) => {
-    if (selected) {
-      setChosenAttribute(() => {
-        return { ...chosenAttribute, ...selected };
-      });
-    }
+  const chooseAttribute = (index, attribute, productId) => {
     setChosenAttribute(() => {
       return {
         ...chosenAttribute,
@@ -109,7 +104,7 @@ export const SingleProductProvider = ({ children }) => {
     }, 0);
     setTotalPrice(totalPrice);
   }, [singleProduct, chosenCurrencyInd]);
-
+  console.log(chosenAttribute);
   return (
     <SingleProductContext.Provider
       value={{
