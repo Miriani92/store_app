@@ -12,6 +12,7 @@ export const SingleProductProvider = ({ children }) => {
   const [chosenCurrencyInd, setChosenCurrencyInd] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [attrForSingleProduct, setAttrForSilgelProduct] = useState({});
   const [choseCurrencySymbol, setChoseCurrencySymbol] = useState("$");
   const [chosenAttribute, setChosenAttribute] = useState({});
 
@@ -23,6 +24,12 @@ export const SingleProductProvider = ({ children }) => {
         return { ...state, ...selcetedAttr };
       });
     }
+    setChosenAttribute((state) => {
+      return {
+        ...state,
+        ...attrForSingleProduct,
+      };
+    });
 
     const matchedProductIndex = singleProduct.findIndex(
       (item) => item.id === id
@@ -89,13 +96,16 @@ export const SingleProductProvider = ({ children }) => {
     setSingleProduct([...updatedSIngeleProduct]);
   };
 
-  const chooseAttribute = (index, attribute, productId) => {
-    setChosenAttribute(() => {
-      return {
-        ...chosenAttribute,
-        [productId]: { ...chosenAttribute[productId], [index]: attribute },
-      };
-    });
+  // const chooseAttribute = (index, attribute, productId) => {
+  //   setChosenAttribute(() => {
+  //     return {
+  //       ...chosenAttribute,
+  //       [productId]: { ...chosenAttribute[productId], [index]: attribute },
+  //     };
+  //   });
+  // };
+  const setAttrForSingleProduct = (attr) => {
+    setAttrForSilgelProduct(attr);
   };
 
   useEffect(() => {
@@ -104,7 +114,7 @@ export const SingleProductProvider = ({ children }) => {
     }, 0);
     setTotalPrice(totalPrice);
   }, [singleProduct, chosenCurrencyInd]);
-  console.log(chosenAttribute);
+
   return (
     <SingleProductContext.Provider
       value={{
@@ -121,8 +131,8 @@ export const SingleProductProvider = ({ children }) => {
         changeQuantity,
         totalPrice,
         choseCurrencySymbol,
-        chooseAttribute,
         chosenAttribute,
+        setAttrForSingleProduct,
       }}
     >
       {children}

@@ -7,8 +7,17 @@ class Attributes extends Component {
   static contextType = SingleProductContext;
   constructor(props) {
     super(props);
+    this.state = {
+      ...this.props.selectedAttribute,
+    };
   }
-
+  chooseAttForSinbleProduct = (index, attribute, productId) => {
+    this.setState({
+      ...this.state,
+      [productId]: { ...this.state[productId], [index]: attribute },
+    });
+    this.context.setAttrForSingleProduct(this.state);
+  };
   render() {
     if (!this.props.attributes.length === 0) return null;
 
@@ -31,13 +40,14 @@ class Attributes extends Component {
                 return (
                   <Item
                     key={ind}
-                    selectedAttribute={this.props.selectedAttribute}
+                    preSelectedAttribute={this.state}
                     item={item}
                     attr={attr}
                     index={index}
                     productId={this.props.id}
                     cartBag={cartBag}
-                    chooseAttribute={chooseAttribute}
+                    chooseAttribute={this.chooseAttForSinbleProduct}
+                    chosenAttribute={this.props.chosenAttribute}
                   />
                 );
               })}

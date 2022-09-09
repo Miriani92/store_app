@@ -9,10 +9,16 @@ class Item extends Component {
   }
 
   render() {
-    const { chosenAttribute } = this.context;
+    // const { chosenAttribute } = this.context;
     const cartBag = this.props.cartBag;
-    let attribute = { ...this.props.selectedAttribute, ...chosenAttribute };
-
+    //let attribute = { ...this.props.preSelectedAttribute, ...chosenAttribute };
+    let attribute;
+    if (this.props.preSelectedAttribute) {
+      attribute = this.props.preSelectedAttribute;
+    } else {
+      attribute = this.props.chosenAttribute;
+    }
+    console.log(attribute);
     return (
       <button
         key={this.props.item.id}
