@@ -21,7 +21,7 @@ class SingleProduct extends Component {
 
   render() {
     if (this.context.loading) return <Loading />;
-    const { data } = this.context;
+    const { data, addSingleProductAttr } = this.context;
 
     const product = data.category.products.find(
       (product) => product.id === this.props.match.params.id
@@ -63,7 +63,11 @@ class SingleProduct extends Component {
             <Attributes
               attributes={product.attributes}
               id={product.id}
-              selectedAttribute={selectedAttribute}
+              addSingleProductAttr={addSingleProductAttr.bind(
+                null,
+                selectedAttribute
+              )}
+              // selectedAttribute={selectedAttribute}
             />
           )}
           <h4 className={styles.price}>PRICE:</h4>

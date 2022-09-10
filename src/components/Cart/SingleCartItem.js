@@ -12,12 +12,8 @@ class SingleCartItem extends Component {
   }
 
   render() {
-    const {
-      chosenCurrencyInd,
-      countTotalProducts,
-      changeQuantity,
-      chosenAttribute,
-    } = this.context;
+    const { chosenCurrencyInd, countTotalProducts, changeQuantity } =
+      this.context;
     const cartBag = this.props.cartBag;
 
     return (
@@ -47,7 +43,7 @@ class SingleCartItem extends Component {
             attributes={this.props.attributes}
             id={this.props.id}
             cartBag={cartBag}
-            selectedAttr={chosenAttribute}
+            cartChosenAttributes={this.props.chosenAttribute}
           />
         </div>
         <div>

@@ -9,22 +9,21 @@ class Item extends Component {
   }
 
   render() {
-    // const { chosenAttribute } = this.context;
+    const { changeAttribute, singleProductAttr } = this.context;
     const cartBag = this.props.cartBag;
-    //let attribute = { ...this.props.preSelectedAttribute, ...chosenAttribute };
-    let attribute;
-    if (this.props.preSelectedAttribute) {
-      attribute = this.props.preSelectedAttribute;
-    } else {
-      attribute = this.props.chosenAttribute;
-    }
-    console.log(attribute);
+
+    let attributes = {
+      ...singleProductAttr,
+      ...this.props.cartChosenAttributes,
+    };
+    console.log(this.props.cartChosenAttributes);
+
     return (
       <button
         key={this.props.item.id}
         className={
-          attribute[this.props.productId] &&
-          attribute[this.props.productId][this.props.index] ===
+          attributes[this.props.productId] &&
+          attributes[this.props.productId][this.props.index] ===
             this.props.item.value
             ? ` ${styles.button} ${cartBag && styles["cart-button"]} ${
                 styles.add
@@ -34,7 +33,7 @@ class Item extends Component {
             : styles.button
         }
         onClick={() =>
-          this.props.chooseAttribute(
+          changeAttribute(
             this.props.index,
             this.props.item.value,
             this.props.productId

@@ -30,7 +30,7 @@ class ProductCard extends Component {
           <Link
             className={inStock ? styles.cartButton : styles.disableBtn}
             to="/cart"
-            onClick={() => addToCart(id)}
+            onClick={() => addToCart(id, "productCard")}
           >
             <BsCart />
           </Link>

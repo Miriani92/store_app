@@ -12,24 +12,18 @@ export const SingleProductProvider = ({ children }) => {
   const [chosenCurrencyInd, setChosenCurrencyInd] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [attrForSingleProduct, setAttrForSilgelProduct] = useState({});
   const [choseCurrencySymbol, setChoseCurrencySymbol] = useState("$");
-  const [chosenAttribute, setChosenAttribute] = useState({});
+  const [singleProductAttr, setSingleProductAttr] = useState({});
 
-  const addToCart = (id) => {
+  const addToCart = (id, component = "") => {
     const product = data.category.products.find((product) => product.id === id);
-    const selcetedAttr = predefineAttribute(id, product.attributes);
-    if (!chosenAttribute.hasOwnProperty(id)) {
-      setChosenAttribute((state) => {
-        return { ...state, ...selcetedAttr };
-      });
+
+    let attributes;
+    if (component === "productCard") {
+      attributes = predefineAttribute(id, product.attributes);
+    } else {
+      attributes = singleProductAttr;
     }
-    setChosenAttribute((state) => {
-      return {
-        ...state,
-        ...attrForSingleProduct,
-      };
-    });
 
     const matchedProductIndex = singleProduct.findIndex(
       (item) => item.id === id
@@ -47,7 +41,10 @@ export const SingleProductProvider = ({ children }) => {
     }
 
     setSingleProduct(() => {
-      return [...singleProduct, { ...product, value: 1 }];
+      return [
+        ...singleProduct,
+        { ...product, value: 1, chosenAttribute: { ...attributes } },
+      ];
     });
 
     setTotalQuantity(totalQuantity + 1);
@@ -104,8 +101,19 @@ export const SingleProductProvider = ({ children }) => {
   //     };
   //   });
   // };
-  const setAttrForSingleProduct = (attr) => {
-    setAttrForSilgelProduct(attr);
+  // const setAttrForSingleProduct = (attr) => {
+  //   setAttrForSilgelProduct(attr);
+  // };
+  const addSingleProductAttr = (selectedAttr) => {
+    setSingleProductAttr(selectedAttr);
+  };
+  const changeAttribute = (index, attribute, productId) => {
+    setSingleProductAttr((prevAttribute) => {
+      return {
+        ...prevAttribute,
+        [productId]: { ...prevAttribute[productId], [index]: attribute },
+      };
+    });
   };
 
   useEffect(() => {
@@ -131,8 +139,9 @@ export const SingleProductProvider = ({ children }) => {
         changeQuantity,
         totalPrice,
         choseCurrencySymbol,
-        chosenAttribute,
-        setAttrForSingleProduct,
+        addSingleProductAttr,
+        changeAttribute,
+        singleProductAttr,
       }}
     >
       {children}
