@@ -15,6 +15,7 @@ class SingleCartItem extends Component {
     const { chosenCurrencyInd, countTotalProducts, changeQuantity } =
       this.context;
     const cartBag = this.props.cartBag;
+    const product = this.props;
 
     return (
       <div
@@ -68,7 +69,7 @@ class SingleCartItem extends Component {
                     : styles.plusbtn
                 }
                 onClick={() => {
-                  changeQuantity(this.props.id, "plus");
+                  changeQuantity(product, "plus");
                   countTotalProducts("plus");
                 }}
               >
@@ -92,7 +93,7 @@ class SingleCartItem extends Component {
                     : styles.minusbtn
                 }
                 onClick={() => {
-                  changeQuantity(this.props.id, "minus");
+                  changeQuantity(product, "minus");
                   countTotalProducts("minus");
                 }}
               >

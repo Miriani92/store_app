@@ -3,6 +3,7 @@ import useQueryProduct from "../../hooks/useQueryProduct";
 import useCurrencies from "../../hooks/useCurrencies";
 import { predefineAttribute } from "../../utils/predefinedAttribute";
 import { findDuplicateAttribute } from "../../utils/findeDuplicateAttribute";
+import { findProductIndex } from "../../utils/findProductIndex";
 
 const SingleProductContext = createContext();
 
@@ -70,23 +71,19 @@ export const SingleProductProvider = ({ children }) => {
       setTotalQuantity((total) => total - 1);
     }
   };
-  const changeQuantity = (id, action) => {
+  const changeQuantity = (product, action) => {
     const updatedSIngeleProduct = [...singleProduct];
 
-    const productIndex = updatedSIngeleProduct.findIndex(
-      (product) => product.id === id
-    );
+    const productIndex = findProductIndex(updatedSIngeleProduct, product);
     if (action === "plus") {
       updatedSIngeleProduct[productIndex].value =
         updatedSIngeleProduct[productIndex].value + 1;
     }
     if (action === "minus") {
       if (updatedSIngeleProduct[productIndex].value === 1) {
-        const updatedSingle = updatedSIngeleProduct.filter(
-          (item) => item.id !== updatedSIngeleProduct[productIndex].id
-        );
+        updatedSIngeleProduct.splice(productIndex, 1);
 
-        return setSingleProduct([...updatedSingle]);
+        return setSingleProduct([...updatedSIngeleProduct]);
       }
       updatedSIngeleProduct[productIndex].value =
         updatedSIngeleProduct[productIndex].value - 1;
