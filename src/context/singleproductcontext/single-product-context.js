@@ -2,6 +2,7 @@ import React, { useState, createContext, useEffect } from "react";
 import useQueryProduct from "../../hooks/useQueryProduct";
 import useCurrencies from "../../hooks/useCurrencies";
 import { predefineAttribute } from "../../utils/predefinedAttribute";
+import { findDuplicateAttribute } from "../../utils/findeDuplicateAttribute";
 
 const SingleProductContext = createContext();
 
@@ -28,8 +29,9 @@ export const SingleProductProvider = ({ children }) => {
     const matchedProductIndex = singleProduct.findIndex(
       (item) => item.id === id
     );
+    const isDuplicatedAttr = findDuplicateAttribute(singleProduct, attributes);
 
-    if (matchedProductIndex !== -1) {
+    if (matchedProductIndex !== -1 && isDuplicatedAttr) {
       const copiedList = [...singleProduct];
       const doubledProduct = copiedList[matchedProductIndex];
       copiedList[matchedProductIndex] = {
@@ -93,17 +95,6 @@ export const SingleProductProvider = ({ children }) => {
     setSingleProduct([...updatedSIngeleProduct]);
   };
 
-  // const chooseAttribute = (index, attribute, productId) => {
-  //   setChosenAttribute(() => {
-  //     return {
-  //       ...chosenAttribute,
-  //       [productId]: { ...chosenAttribute[productId], [index]: attribute },
-  //     };
-  //   });
-  // };
-  // const setAttrForSingleProduct = (attr) => {
-  //   setAttrForSilgelProduct(attr);
-  // };
   const addSingleProductAttr = (selectedAttr) => {
     setSingleProductAttr(selectedAttr);
   };

@@ -16,7 +16,6 @@ class Item extends Component {
       ...singleProductAttr,
       ...this.props.cartChosenAttributes,
     };
-    console.log(this.props.cartChosenAttributes);
 
     return (
       <button
