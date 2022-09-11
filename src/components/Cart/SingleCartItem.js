@@ -15,6 +15,7 @@ class SingleCartItem extends Component {
     const { chosenCurrencyInd, countTotalProducts, changeQuantity } =
       this.context;
     const cartBag = this.props.cartBag;
+    const product = this.props;
 
     return (
       <div
@@ -36,6 +37,7 @@ class SingleCartItem extends Component {
               amount={
                 this.props.prices && this.props.prices[chosenCurrencyInd].amount
               }
+              quantity={this.props.value}
               cartBag={cartBag}
             />
           </div>
@@ -43,6 +45,7 @@ class SingleCartItem extends Component {
             attributes={this.props.attributes}
             id={this.props.id}
             cartBag={cartBag}
+            cartChosenAttributes={this.props.chosenAttribute}
           />
         </div>
         <div>
@@ -67,7 +70,7 @@ class SingleCartItem extends Component {
                     : styles.plusbtn
                 }
                 onClick={() => {
-                  changeQuantity(this.props.id, "plus");
+                  changeQuantity(product, "plus");
                   countTotalProducts("plus");
                 }}
               >
@@ -91,7 +94,7 @@ class SingleCartItem extends Component {
                     : styles.minusbtn
                 }
                 onClick={() => {
-                  changeQuantity(this.props.id, "minus");
+                  changeQuantity(product, "minus");
                   countTotalProducts("minus");
                 }}
               >

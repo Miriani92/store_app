@@ -21,8 +21,8 @@ class Cart extends Component {
       <div className={styles.cart}>
         <h1>Cart</h1>
         <div className={styles.line}></div>
-        {singleProduct.map((product) => {
-          return <SingleCartItem {...product} key={product.id} />;
+        {singleProduct.map((product, index) => {
+          return <SingleCartItem {...product} key={index} />;
         })}
         <h3>
           Tax 21%:

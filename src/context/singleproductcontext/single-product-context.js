@@ -2,6 +2,8 @@ import React, { useState, createContext, useEffect } from "react";
 import useQueryProduct from "../../hooks/useQueryProduct";
 import useCurrencies from "../../hooks/useCurrencies";
 import { predefineAttribute } from "../../utils/predefinedAttribute";
+import { findDuplicateAttribute } from "../../utils/findeDuplicateAttribute";
+import { findProductIndex } from "../../utils/findProductIndex";
 
 const SingleProductContext = createContext();
 
@@ -13,22 +15,24 @@ export const SingleProductProvider = ({ children }) => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [choseCurrencySymbol, setChoseCurrencySymbol] = useState("$");
-  const [chosenAttribute, setChosenAttribute] = useState({});
+  const [singleProductAttr, setSingleProductAttr] = useState({});
 
-  const addToCart = (id) => {
+  const addToCart = (id, component = "") => {
     const product = data.category.products.find((product) => product.id === id);
-    const selcetedAttr = predefineAttribute(id, product.attributes);
-    if (!chosenAttribute.hasOwnProperty(id)) {
-      setChosenAttribute((state) => {
-        return { ...state, ...selcetedAttr };
-      });
+
+    let attributes;
+    if (component === "productCard") {
+      attributes = predefineAttribute(id, product.attributes);
+    } else {
+      attributes = singleProductAttr;
     }
 
     const matchedProductIndex = singleProduct.findIndex(
       (item) => item.id === id
     );
+    const isDuplicatedAttr = findDuplicateAttribute(singleProduct, attributes);
 
-    if (matchedProductIndex !== -1) {
+    if (matchedProductIndex !== -1 && isDuplicatedAttr) {
       const copiedList = [...singleProduct];
       const doubledProduct = copiedList[matchedProductIndex];
       copiedList[matchedProductIndex] = {
@@ -40,7 +44,10 @@ export const SingleProductProvider = ({ children }) => {
     }
 
     setSingleProduct(() => {
-      return [...singleProduct, { ...product, value: 1 }];
+      return [
+        ...singleProduct,
+        { ...product, value: 1, chosenAttribute: { ...attributes } },
+      ];
     });
 
     setTotalQuantity(totalQuantity + 1);
@@ -64,23 +71,19 @@ export const SingleProductProvider = ({ children }) => {
       setTotalQuantity((total) => total - 1);
     }
   };
-  const changeQuantity = (id, action) => {
+  const changeQuantity = (product, action) => {
     const updatedSIngeleProduct = [...singleProduct];
 
-    const productIndex = updatedSIngeleProduct.findIndex(
-      (product) => product.id === id
-    );
+    const productIndex = findProductIndex(updatedSIngeleProduct, product);
     if (action === "plus") {
       updatedSIngeleProduct[productIndex].value =
         updatedSIngeleProduct[productIndex].value + 1;
     }
     if (action === "minus") {
       if (updatedSIngeleProduct[productIndex].value === 1) {
-        const updatedSingle = updatedSIngeleProduct.filter(
-          (item) => item.id !== updatedSIngeleProduct[productIndex].id
-        );
+        updatedSIngeleProduct.splice(productIndex, 1);
 
-        return setSingleProduct([...updatedSingle]);
+        return setSingleProduct([...updatedSIngeleProduct]);
       }
       updatedSIngeleProduct[productIndex].value =
         updatedSIngeleProduct[productIndex].value - 1;
@@ -89,11 +92,14 @@ export const SingleProductProvider = ({ children }) => {
     setSingleProduct([...updatedSIngeleProduct]);
   };
 
-  const chooseAttribute = (index, attribute, productId) => {
-    setChosenAttribute(() => {
+  const addSingleProductAttr = (selectedAttr) => {
+    setSingleProductAttr(selectedAttr);
+  };
+  const changeAttribute = (index, attribute, productId) => {
+    setSingleProductAttr((prevAttribute) => {
       return {
-        ...chosenAttribute,
-        [productId]: { ...chosenAttribute[productId], [index]: attribute },
+        ...prevAttribute,
+        [productId]: { ...prevAttribute[productId], [index]: attribute },
       };
     });
   };
@@ -104,7 +110,7 @@ export const SingleProductProvider = ({ children }) => {
     }, 0);
     setTotalPrice(totalPrice);
   }, [singleProduct, chosenCurrencyInd]);
-  console.log(chosenAttribute);
+
   return (
     <SingleProductContext.Provider
       value={{
@@ -121,8 +127,9 @@ export const SingleProductProvider = ({ children }) => {
         changeQuantity,
         totalPrice,
         choseCurrencySymbol,
-        chooseAttribute,
-        chosenAttribute,
+        addSingleProductAttr,
+        changeAttribute,
+        singleProductAttr,
       }}
     >
       {children}

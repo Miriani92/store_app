@@ -35,9 +35,9 @@ class CartBag extends Component {
           >
             My Bag. <span>{totalQuantity} items</span>
           </h3>
-          {singleProduct.map((product) => {
+          {singleProduct.map((product, index) => {
             return (
-              <SingleCartItem {...product} key={product.id} cartBag="cartBag" />
+              <SingleCartItem {...product} key={index} cartBag="cartBag" />
             );
           })}
           <div className={totalPrice !== 0 ? styles.price : styles.displaynone}>
