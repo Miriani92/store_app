@@ -37,6 +37,7 @@ class SingleCartItem extends Component {
               amount={
                 this.props.prices && this.props.prices[chosenCurrencyInd].amount
               }
+              quantity={this.props.value}
               cartBag={cartBag}
             />
           </div>
