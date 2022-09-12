@@ -20,12 +20,13 @@ class SingleProduct extends Component {
   }
 
   render() {
+    console.log("heerrere");
     if (this.context.loading) return <Loading />;
     const { data, addSingleProductAttr } = this.context;
-
     const product = data.category.products.find(
       (product) => product.id === this.props.match.params.id
     );
+
     const selectedAttribute = predefineAttribute(
       product.id,
       product.attributes

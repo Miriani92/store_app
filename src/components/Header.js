@@ -12,10 +12,24 @@ class Header extends Component {
 
   render() {
     const { taggleCart, iseCurrenciesOpen, togglecurrencies } = this.context;
-
     return (
       <nav className={styles.nav}>
         <ul>
+          {this.props.categories.map((category, index) => {
+            console.log(category.name);
+            return (
+              <li key={category.name}>
+                <NavLink
+                  to={`/${category.name}`}
+                  activeClassName={styles.active}
+                >
+                  {category.name}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+        {/* <ul>
           <li>
             <NavLink exact to="/" activeClassName={styles.active}>
               ALL
@@ -31,7 +45,7 @@ class Header extends Component {
               TECH
             </NavLink>
           </li>
-        </ul>
+        </ul> */}
         <img src={logo} className={styles.logo} alt="logo" />
         <div className={styles.cartsection}>
           <div>

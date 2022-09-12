@@ -70,3 +70,11 @@ export const GET_CURRENCIES = gql`
     }
   }
 `;
+
+export const GET_CATEGORIES = gql`
+  query {
+    categories {
+      name
+    }
+  }
+`;

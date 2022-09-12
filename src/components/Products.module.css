@@ -7,3 +7,13 @@
   grid-template-rows: repeat(auto-fit, 450px);
   gap: 50px;
 }
+
+.category {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 160%;
+}

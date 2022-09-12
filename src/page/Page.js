@@ -15,7 +15,11 @@ class Page extends Component {
 
     return (
       <div>
-        <Header symbol={this.props.symbol} totalItems={this.props.totalItems} />
+        <Header
+          symbol={this.props.symbol}
+          totalItems={this.props.totalItems}
+          categories={this.props.categories}
+        />
         {isCartOpen && <CartBag />}
         <Routes />
       </div>

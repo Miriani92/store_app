@@ -12,17 +12,26 @@ class Products extends Component {
 
   render() {
     if (this.context.loading) return <Loading />;
-
     const products = renderBasedCategory(
       this.context.data.category.products,
-      this.props.category
+      this.props.categoryName
     );
+
     return (
-      <div className={styles.productswrapper}>
-        {products.map((product) => {
-          return <ProductCard key={product.id} {...product} />;
-        })}
-      </div>
+      <React.Fragment>
+        <h2 className={styles.category}>{this.props.categoryName}</h2>
+        <div className={styles.productswrapper}>
+          {products.map((product) => {
+            return (
+              <ProductCard
+                key={product.id}
+                {...product}
+                categoryName={this.props.categoryName}
+              />
+            );
+          })}
+        </div>
+      </React.Fragment>
     );
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Button.module.css";
 
 class Button extends Component {
@@ -6,13 +7,15 @@ class Button extends Component {
     super(props);
   }
   render() {
+    const viewBag = this.props.text === "VIEW BAG";
     return (
-      <button
+      <Link
         style={this.props.style && this.props.style}
         className={styles.button}
+        to={viewBag ? "/cart" : null}
       >
         {this.props.text}
-      </button>
+      </Link>
     );
   }
 }

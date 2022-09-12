@@ -1,6 +1,7 @@
 import React, { useState, createContext, useEffect } from "react";
 import useQueryProduct from "../../hooks/useQueryProduct";
 import useCurrencies from "../../hooks/useCurrencies";
+import useCategories from "../../hooks/useCategories";
 import { predefineAttribute } from "../../utils/predefinedAttribute";
 import { findDuplicateAttribute } from "../../utils/findeDuplicateAttribute";
 import { findProductIndex } from "../../utils/findProductIndex";
@@ -10,6 +11,7 @@ const SingleProductContext = createContext();
 export const SingleProductProvider = ({ children }) => {
   const { loading, error, data } = useQueryProduct();
   const { currencies } = useCurrencies();
+  const { ...categories } = useCategories();
   const [singleProduct, setSingleProduct] = useState([]);
   const [chosenCurrencyInd, setChosenCurrencyInd] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -58,7 +60,6 @@ export const SingleProductProvider = ({ children }) => {
     setChosenCurrencyInd(ind);
     const symbol = currencies.currencies[ind].symbol;
     localStorage.setItem("symbol", symbol);
-
     setChoseCurrencySymbol(localStorage.getItem("symbol"));
   };
 
@@ -110,7 +111,6 @@ export const SingleProductProvider = ({ children }) => {
     }, 0);
     setTotalPrice(totalPrice);
   }, [singleProduct, chosenCurrencyInd]);
-
   return (
     <SingleProductContext.Provider
       value={{
@@ -130,6 +130,7 @@ export const SingleProductProvider = ({ children }) => {
         addSingleProductAttr,
         changeAttribute,
         singleProductAttr,
+        categories,
       }}
     >
       {children}

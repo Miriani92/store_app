@@ -23,7 +23,10 @@ class ProductCard extends Component {
             : `${styles.productWrapper} ${styles.outofstack}`
         }
       >
-        <Link to={`singleproduct/${id}`} className={styles.button} />
+        <Link
+          to={`/${this.props.categoryName}/singleproduct/${id}`}
+          className={styles.button}
+        />
         <div className={styles.wrapper}>
           <img src={gallery[0]} className={styles.img} />
           <p>{name}</p>
