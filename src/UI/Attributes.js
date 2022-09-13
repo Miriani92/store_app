@@ -7,9 +7,6 @@ class Attributes extends Component {
   static contextType = SingleProductContext;
   constructor(props) {
     super(props);
-    // this.state = {
-    //   ...this.props.selectedAttribute,
-    // };
   }
 
   componentDidMount() {
@@ -18,13 +15,6 @@ class Attributes extends Component {
     }
   }
 
-  // chooseAttForSinbleProduct = (index, attribute, productId) => {
-  //   this.setState({
-  //     ...this.state,
-  //     [productId]: { ...this.state[productId], [index]: attribute },
-  //   });
-  //   this.context.setAttrForSingleProduct(this.state);
-  // };
   render() {
     if (!this.props.attributes.length === 0) return null;
 

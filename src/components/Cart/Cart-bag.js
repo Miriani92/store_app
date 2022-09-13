@@ -53,7 +53,8 @@ class CartBag extends Component {
             <Button
               text="CHECK OUT"
               style={{
-                backgroundColor: "green",
+                backgroundColor: "#5ECE7B",
+                color: "#FFFFFF",
                 border: "none",
               }}
             />

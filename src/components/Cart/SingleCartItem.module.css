@@ -5,7 +5,9 @@
 }
 .buttonswrapper {
   display: flex;
+  height: 100%;
 }
+
 .buttons {
   position: relative;
   line-height: 290px;
@@ -21,6 +23,7 @@
   cursor: pointer;
   line-height: 45px;
   z-index: 10;
+  border: 1px solid #1d1f22;
 }
 
 .minusbtn {
@@ -31,6 +34,7 @@
   font-size: 25px;
   line-height: 45px;
   cursor: pointer;
+  border: 1px solid #1d1f22;
 }
 .buttons > div {
   position: absolute;
@@ -42,22 +46,39 @@
 
 .bag-minusbtn,
 .bag-plusbtn {
-  width: 30px;
+  width: 24px;
   font-size: 20px;
-  line-height: 30px;
+  line-height: 24px;
+  border: 1px solid #1d1f22;
+}
+.bag-minusbtn {
+  position: absolute;
+}
+
+.bag-buttons {
+  margin-right: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .bag-buttons {
-  line-height: 120px;
-  margin-right: 40px;
+  line-height: 100%;
+  text-align: center;
 }
 .bag-cartitem {
   padding: 10% 5%;
 }
 
 .bag-quantity {
-  text-align: start;
+  text-align: center;
+  line-height: 45px;
+  margin-left: -10px;
   font-size: 14px;
-  padding-left: 10px;
+}
+.quantity {
+  width: 100px;
+  height: 100px;
 }
 .bag-name {
   font-size: 16px;

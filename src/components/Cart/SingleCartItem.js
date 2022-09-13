@@ -76,16 +76,14 @@ class SingleCartItem extends Component {
               >
                 +
               </button>
-              <div>
-                <h3
-                  className={
-                    cartBag
-                      ? `${styles.quantity} ${styles["bag-quantity"]}`
-                      : styles.quantity
-                  }
-                >
-                  {this.props.value}
-                </h3>
+              <div
+                className={
+                  cartBag
+                    ? `${styles.quantity} ${styles["bag-quantity"]}`
+                    : styles.quantity
+                }
+              >
+                {this.props.value}
               </div>
               <button
                 className={

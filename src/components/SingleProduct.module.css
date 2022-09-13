@@ -17,6 +17,7 @@
 .disableBtn {
   background: rgb(150, 191, 191);
   opacity: 0.7;
+  cursor: default;
 }
 .images {
   object-fit: contain;

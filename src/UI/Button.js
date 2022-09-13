@@ -12,7 +12,7 @@ class Button extends Component {
       <Link
         style={this.props.style && this.props.style}
         className={styles.button}
-        to={viewBag ? "/cart" : null}
+        to={viewBag ? "/cart" : "/"}
       >
         {this.props.text}
       </Link>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 import { BsCart } from "react-icons/bs";
 import { MdKeyboardArrowUp } from "react-icons/md";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import Currencies from "./Currencies";
 import { CartContext } from "../context/cartcontext/Cart-actions";
 
@@ -16,7 +16,6 @@ class Header extends Component {
       <nav className={styles.nav}>
         <ul>
           {this.props.categories.map((category, index) => {
-            console.log(category.name);
             return (
               <li key={category.name}>
                 <NavLink
@@ -29,23 +28,6 @@ class Header extends Component {
             );
           })}
         </ul>
-        {/* <ul>
-          <li>
-            <NavLink exact to="/" activeClassName={styles.active}>
-              ALL
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/clothes" activeClassName={styles.active}>
-              CLOTHES
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/tech" activeClassName={styles.active}>
-              TECH
-            </NavLink>
-          </li>
-        </ul> */}
         <img src={logo} className={styles.logo} alt="logo" />
         <div className={styles.cartsection}>
           <div>

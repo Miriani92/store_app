@@ -6,6 +6,7 @@ import Attributes from "../UI/Attributes";
 import ChoseCurrency from "./ChosenCurrency";
 import { predefineAttribute } from "../utils/predefinedAttribute";
 import { withRouter } from "react-router";
+import parse from "html-react-parser";
 
 class SingleProduct extends Component {
   static contextType = SingleProductContext;
@@ -20,7 +21,6 @@ class SingleProduct extends Component {
   }
 
   render() {
-    console.log("heerrere");
     if (this.context.loading) return <Loading />;
     const { data, addSingleProductAttr } = this.context;
     const product = data.category.products.find(
@@ -31,7 +31,7 @@ class SingleProduct extends Component {
       product.id,
       product.attributes
     );
-
+    const parsedJsx = parse(product.description);
     const { addToCart, chosenCurrencyInd } = this.context;
 
     return (
@@ -68,7 +68,6 @@ class SingleProduct extends Component {
                 null,
                 selectedAttribute
               )}
-              // selectedAttribute={selectedAttribute}
             />
           )}
           <h4 className={styles.price}>PRICE:</h4>
@@ -94,10 +93,7 @@ class SingleProduct extends Component {
           >
             ADD TO CART
           </button>
-          <div
-            className={styles.description}
-            dangerouslySetInnerHTML={{ __html: `${product.description}` }}
-          ></div>
+          <div className={styles.description}>{parsedJsx}</div>
         </div>
       </article>
     );

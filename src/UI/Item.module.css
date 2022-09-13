@@ -1,21 +1,20 @@
 .button {
   all: unset;
-  outline: 1px solid black;
   height: 45px;
   width: 63px;
   cursor: pointer;
   margin-right: 10px;
   text-align: center;
-  margin-bottom: 10px;
 }
 .add {
   border: none;
-  background-color: black;
+  background-color: #1d1f22;
   color: white;
-  outline: 2px solid black;
+  outline: 2px solid #5ece7b;
 }
 .cart-button {
-  width: 35px;
-  height: 35px;
-  font-size: 16;
+  width: 16px;
+  height: 16px;
+  font-size: 14px;
+  text-overflow: ellipsis;
 }

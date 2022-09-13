@@ -18,6 +18,7 @@
 }
 nav > ul > li {
   position: relative;
+  text-align: center;
   list-style-type: none;
   position: relative;
   font-size: 16px;
@@ -29,18 +30,27 @@ nav > ul > li {
 nav > ul > li > * {
   position: absolute;
   text-decoration: none;
-  width: 100%;
+  width: 120%;
   height: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: black;
-  letter-spacing: 1px;
+  color: #1d1f22;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 nav > ul > li .active {
   color: #5ece7b;
+  border-bottom: 2px solid #5ece7b;
+  font-weight: 600;
+}
+nav > ul > li .active {
   border-bottom: 2px solid #5ece7b;
 }
 .cartsection {
@@ -53,8 +63,13 @@ nav > ul > li .active {
   font-size: 16px;
 }
 .logo {
-  width: 35px;
-  height: 35px;
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 31px;
+  height: 28px;
+  margin-top: 12px;
 }
 .arrowbutton {
   all: unset;

@@ -12,7 +12,6 @@ class Cart extends Component {
   }
 
   render() {
-    console.log("here in the cart");
     const { singleProduct, totalQuantity, totalPrice, choseCurrencySymbol } =
       this.context;
     if (totalPrice == 0) {

@@ -11,6 +11,14 @@ class Item extends Component {
   render() {
     const { changeAttribute, singleProductAttr } = this.context;
     const cartBag = this.props.cartBag;
+    const isSwatchAttrType = this.props.attr.type !== "swatch";
+    const swatchStyle = {
+      backgroundColor: !isSwatchAttrType && `${this.props.item.value}`,
+      width: isSwatchAttrType && cartBag && 24,
+      height: isSwatchAttrType && cartBag && 24,
+      outline: isSwatchAttrType && "none",
+      border: isSwatchAttrType && "1px solid #1d1f22",
+    };
 
     let attributes = {
       ...singleProductAttr,
@@ -38,10 +46,7 @@ class Item extends Component {
             this.props.productId
           )
         }
-        style={{
-          backgroundColor:
-            this.props.attr.type === "swatch" && `${this.props.item.value}`,
-        }}
+        style={swatchStyle}
       >
         {this.props.attr.type !== "swatch" && this.props.item.value}
       </button>
