@@ -26,12 +26,7 @@ class Attributes extends Component {
           const { name } = attr;
           return (
             <div key={index}>
-              <h4
-                className={cartBag && styles["bag-name"]}
-                style={{ marginBottom: "10px" }}
-              >
-                {name.toUpperCase()}:
-              </h4>
+              <h4 className={cartBag && styles["bag-name"]}>{name}:</h4>
               {attr.items.map((item, ind) => {
                 return (
                   <Item

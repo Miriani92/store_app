@@ -10,7 +10,7 @@ class ChoseCurrency extends Component {
     const quantity = this.props.quantity ? this.props.quantity : 1;
     return (
       <>
-        <span className={this.props.cartBag && styles["cart-currency"]}>
+        <span className={this.props.cartBag && styles["bag-currency"]}>
           {this.props.symbol + (this.props.amount * quantity).toFixed(2)}
         </span>
       </>

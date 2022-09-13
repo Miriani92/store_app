@@ -1,6 +1,11 @@
 .attributes {
-  margin-top: 45px;
+  margin-top: 16px;
 }
 .bag-name {
-  font-size: 13px;
+  font-family: Raleway;
+  font-size: 14px;
+  margin: top;
+  font-weight: 400;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
