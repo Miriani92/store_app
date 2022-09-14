@@ -110,6 +110,7 @@ export const SingleProductProvider = ({ children }) => {
     }, 0);
     setTotalPrice(totalPrice);
   }, [singleProduct, chosenCurrencyInd]);
+
   return (
     <SingleProductContext.Provider
       value={{

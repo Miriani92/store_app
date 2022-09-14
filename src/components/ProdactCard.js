@@ -39,6 +39,11 @@ class ProductCard extends Component {
             <ChoseCurrency
               symbol={currencyData.currency.symbol}
               amount={currencyData.amount}
+              style={{
+                fontWeight: 500,
+                fontSize: 18,
+                fontFamily: "Raleway",
+              }}
             />
           </div>
         </div>
