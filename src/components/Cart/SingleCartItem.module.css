@@ -1,25 +1,27 @@
 .cartitem {
-  padding: 16px 0;
+  position: relative;
+  margin: 57px 0;
   display: flex;
+  align-items: stretch;
   justify-content: space-between;
 }
 .buttonswrapper {
   display: flex;
-  justify-content: center;
-  align-items: stretch;
-  height: calc(100% - 57px);
 }
 
 .buttons {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
   line-height: 290px;
-  margin-right: 60px;
+  width: 45px;
+  margin-right: 16px;
 }
 
 .plusbtn {
   position: absolute;
   top: 0;
-  left: 50%;
   width: 45px;
   font-size: 25px;
   cursor: pointer;
@@ -31,19 +33,17 @@
 .minusbtn {
   position: absolute;
   bottom: 0;
-  left: 50%;
   width: 45px;
   font-size: 25px;
   line-height: 45px;
   cursor: pointer;
   border: 1px solid #1d1f22;
 }
-.buttons > div {
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  left: 50%;
-  text-align: center;
+.currency {
+  margin-top: 16px;
+}
+.bag-cartitem {
+  margin: 32px 16px;
 }
 
 .bag-minusbtn,
@@ -56,20 +56,17 @@
 .bag-minusbtn {
   position: absolute;
 }
-
-.bag-buttons {
-  margin-right: 40px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.bag-buttonswrapper {
+  width: 100%;
+  height: 100%;
 }
 .bag-buttons {
+  margin-right: 0px;
+  width: 24px;
+}
+.bag-buttons {
+  text-align: center;
   line-height: 100%;
-  text-align: center;
-}
-.bag-cartitem {
-  padding: 0px 16px;
 }
 
 .bag-quantity {
@@ -78,17 +75,20 @@
   margin-left: -10px;
   font-size: 14px;
 }
-.quantity {
-  width: 100px;
-  height: 100px;
-}
+
 .bag-name {
   word-wrap: break-word;
   font-style: Light;
   font-size: 16px;
   font-weight: 300;
 }
-
-.currency {
-  margin-top: 16px;
+.bag-quantity {
+  height: 100%;
+  width: 100%;
+  transform: translateX(50%);
+  display: flex;
+  align-items: center;
+  line-height: 100%;
+  text-align: center;
+  z-index: 100;
 }
