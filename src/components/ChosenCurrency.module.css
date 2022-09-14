@@ -1,6 +1,7 @@
 span {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 24px;
+  font-family: Raleway;
 }
 
 .bag-currency {
@@ -8,4 +9,5 @@ span {
   font-weight: 500;
   font-size: 16px;
   margin-top: 0;
+  color: #1d1f22;
 }

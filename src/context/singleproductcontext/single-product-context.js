@@ -74,7 +74,6 @@ export const SingleProductProvider = ({ children }) => {
   };
   const changeQuantity = (product, action) => {
     const updatedSIngeleProduct = [...singleProduct];
-
     const productIndex = findProductIndex(updatedSIngeleProduct, product);
     if (action === "plus") {
       updatedSIngeleProduct[productIndex].value =

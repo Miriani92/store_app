@@ -23,8 +23,14 @@ class SingleCartItem extends Component {
         }
       >
         <div>
-          <h2 className={cartBag && styles["bag-name"]}>{this.props.name}</h2>
-          <h2 style={{ fontWeight: 500 }}>{!cartBag && this.props.category}</h2>
+          <h2
+            className={`${styles.productName} ${cartBag && styles["bag-name"]}`}
+          >
+            {this.props.name}
+          </h2>
+          <h2 className={styles.categoryname} style={{ fontWeight: 500 }}>
+            {!cartBag && this.props.category}
+          </h2>
           <div className={styles.currency}>
             <ChoseCurrency
               symbol={
@@ -74,11 +80,9 @@ class SingleCartItem extends Component {
                 +
               </button>
               <div
-                className={
-                  cartBag
-                    ? `${styles.quantity} ${styles["bag-quantity"]}`
-                    : styles.quantity
-                }
+                className={`${
+                  cartBag ? styles["bag-quantity"] : styles.quantity
+                }`}
               >
                 {this.props.value}
               </div>

@@ -33,7 +33,8 @@ class CartBag extends Component {
           <h3
             className={totalPrice !== 0 ? styles.quantity : styles.centerText}
           >
-            My Bag. <span>{totalQuantity} items</span>
+            My Bag.{" "}
+            <span className={styles.totalitems}>{totalQuantity} items</span>
           </h3>
           {singleProduct.map((product, index) => {
             return (

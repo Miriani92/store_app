@@ -63,7 +63,7 @@ class SingleProduct extends Component {
           alt="mainimage"
         />
         <div>
-          <h1>{product.name}</h1>
+          <h1 className={styles.singleproductname}>{product.name}</h1>
           <h1 className={styles.brand}>{product.brand}</h1>
           {product.attributes && (
             <Attributes

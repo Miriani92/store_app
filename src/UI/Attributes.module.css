@@ -6,3 +6,10 @@
   margin-top: 8px;
   margin-bottom: 8px;
 }
+.attributename {
+  font-family: Roboto;
+  font-weight: 800;
+  font-size: 18px;
+  color: #1d1f22;
+  margin: 16px 0 8px 0;
+}

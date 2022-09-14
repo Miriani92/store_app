@@ -15,7 +15,7 @@ class Cart extends Component {
     }
     return (
       <div className={styles.cart}>
-        <h1>Cart</h1>
+        <h1 className={styles.cartname}>Cart</h1>
         <div className={styles.line}></div>
         {singleProduct.map((product, index) => {
           return <SingleCartItem {...product} key={index} />;

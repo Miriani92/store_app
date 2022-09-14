@@ -29,7 +29,18 @@
   z-index: 10;
   border: 1px solid #1d1f22;
 }
-
+.productName {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: Raleway;
+  color: #1d1f22;
+}
+.categoryname {
+  font-size: 30px;
+  padding-top: 8px;
+  font-family: Raleway;
+  font-weight: 400;
+}
 .minusbtn {
   position: absolute;
   bottom: 0;
@@ -52,6 +63,7 @@
   font-size: 20px;
   line-height: 24px;
   border: 1px solid #1d1f22;
+  z-index: 100;
 }
 .bag-minusbtn {
   position: absolute;
@@ -71,9 +83,8 @@
 
 .bag-quantity {
   text-align: center;
-  line-height: 45px;
+  /* line-height: 45px; */
   margin-left: -10px;
-  font-size: 14px;
 }
 
 .bag-name {
@@ -90,5 +101,12 @@
   align-items: center;
   line-height: 100%;
   text-align: center;
-  z-index: 100;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+}
+.quantity {
+  font-family: Raleway;
+  font-size: 24px;
+  font-weight: 500;
 }

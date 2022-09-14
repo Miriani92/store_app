@@ -15,7 +15,7 @@ class Header extends Component {
     return (
       <nav className={styles.nav}>
         <ul>
-          {this.props.categories.map((category, index) => {
+          {this.props.categories.map((category) => {
             return (
               <li key={category.name}>
                 <NavLink
@@ -31,7 +31,7 @@ class Header extends Component {
         <img src={logo} className={styles.logo} alt="logo" />
         <div className={styles.cartsection}>
           <div>
-            <span>{this.props.symbol}</span>
+            <span className={styles.currencysymbol}>{this.props.symbol}</span>
             <button className={styles.arrowbutton} onClick={togglecurrencies}>
               <MdKeyboardArrowUp />
             </button>
@@ -41,7 +41,9 @@ class Header extends Component {
           </div>
           <button className={styles.cartButton} onClick={() => taggleCart()}>
             <BsCart />
-            <div>{this.props.totalItems}</div>
+            <div className={styles.cartTotalitemsquare}>
+              {this.props.totalItems}
+            </div>
           </button>
         </div>
       </nav>

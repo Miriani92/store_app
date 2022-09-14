@@ -9,14 +9,18 @@ h3 > span {
 .cart {
   margin-top: 70px;
 }
-h1 {
-  margin-bottom: 30px;
+.cartname {
+  margin-bottom: 55px;
+  font-size: 32px;
+  font-family: Raleway;
+  line-height: 40px;
+  color: #1d1f22;
 }
 .line {
   width: 100%;
-  background-color: rgba(4, 4, 4, 0.445);
+  background-color: #e5e5e5;
   height: 1px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 .noitems {
   text-align: center;

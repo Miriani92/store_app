@@ -43,3 +43,7 @@
   line-height: calc(80px + 200px);
   text-align: center;
 }
+.totalitems {
+  font-family: Raleway;
+  font-size: 16px;
+}
