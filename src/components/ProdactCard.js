@@ -7,9 +7,7 @@ import ChoseCurrency from "./ChosenCurrency";
 
 class ProductCard extends Component {
   static contextType = SingleProductContext;
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     const { name, gallery, id, prices, inStock } = this.props;
     const { chosenCurrencyInd, addToCart } = this.context;
@@ -28,7 +26,7 @@ class ProductCard extends Component {
           className={styles.button}
         />
         <div className={styles.wrapper}>
-          <img src={gallery[0]} className={styles.img} />
+          <img src={gallery[0]} className={styles.img} alt="productcardimg" />
           <p>{name}</p>
           <Link
             className={inStock ? styles.cartButton : styles.disableBtn}

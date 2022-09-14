@@ -46,7 +46,11 @@ class SingleProduct extends Component {
                       className={styles.imagebutton}
                       onClick={() => this.changeImgIdx(index)}
                     >
-                      <img src={image} className={styles.images} />
+                      <img
+                        src={image}
+                        className={styles.images}
+                        alt="singleproductimg"
+                      />
                     </button>
                   </div>
                 );
@@ -56,6 +60,7 @@ class SingleProduct extends Component {
         <img
           className={styles.mainImage}
           src={product.gallery && product.gallery[this.state.imageIDX]}
+          alt="mainimage"
         />
         <div>
           <h1>{product.name}</h1>

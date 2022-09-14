@@ -4,6 +4,7 @@
 h3 > span {
   font-weight: 700;
   margin-left: 5px;
+  font-family: Raleway;
 }
 .cart {
   margin-top: 70px;
@@ -22,4 +23,13 @@ h1 {
   padding-top: 100px;
   font-size: 30px;
   font-weight: 700;
+}
+.productQuantity,
+.totalPrice,
+.tax {
+  font-family: Raleway;
+  color: #1d1f22;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
 }

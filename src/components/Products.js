@@ -6,9 +6,6 @@ import SingleProductContext from "../context/singleproductcontext/single-product
 import renderBasedCategory from "../utils/productsReder";
 class Products extends Component {
   static contextType = SingleProductContext;
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     if (this.context.loading) return <Loading />;

@@ -1,2 +1,11 @@
 TO DO 
+//bug: 
+1.when changing the attribute in the cart in changes in the singleporudct
+2.order button
+3.outline issue in the cart item
+5.active link is always active
+6.cart-bag end near to total has wrong margin
+
+
+
 

@@ -5,9 +5,9 @@ import SingleProductContext from "../context/singleproductcontext/single-product
 
 class Attributes extends Component {
   static contextType = SingleProductContext;
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {
     if (this.props.addSingleProductAttr) {
@@ -19,9 +19,11 @@ class Attributes extends Component {
     if (!this.props.attributes.length === 0) return null;
 
     const cartBag = this.props.cartBag;
-
+    const cartBagStyle = {
+      marginTop: cartBag && 16,
+    };
     return (
-      <div className={styles.attributes}>
+      <div className={styles.attributes} style={cartBagStyle}>
         {this.props.attributes.map((attr, index) => {
           const { name } = attr;
           return (

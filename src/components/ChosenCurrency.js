@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import styles from "./ChosenCurrency.module.css";
 
 class ChoseCurrency extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const quantity = this.props.quantity ? this.props.quantity : 1;
     return (

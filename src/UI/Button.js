@@ -5,12 +5,11 @@ import { CartContext } from "../context/cartcontext/Cart-actions";
 
 class Button extends Component {
   static contextType = CartContext;
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     const viewBag = this.props.text === "VIEW BAG";
     const { taggleCart } = this.context;
+    console.log(this.props.style);
     return (
       <Link
         style={this.props.style && this.props.style}

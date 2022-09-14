@@ -4,9 +4,6 @@ import SingleProductContext from "../context/singleproductcontext/single-product
 
 class Item extends Component {
   static contextType = SingleProductContext;
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { changeAttribute, singleProductAttr } = this.context;
@@ -14,10 +11,12 @@ class Item extends Component {
     const isSwatchAttrType = this.props.attr.type !== "swatch";
     const swatchStyle = {
       backgroundColor: !isSwatchAttrType && `${this.props.item.value}`,
-      width: isSwatchAttrType && cartBag && 24,
-      height: isSwatchAttrType && cartBag && 24,
+      // width: isSwatchAttrType && cartBag && 24,
+      // height: isSwatchAttrType && cartBag && 24,
       outline: isSwatchAttrType && "none",
       border: isSwatchAttrType && "1px solid #1d1f22",
+      width: !isSwatchAttrType && !cartBag && 32,
+      height: !isSwatchAttrType && !cartBag && 32,
     };
 
     let attributes = {
@@ -34,9 +33,11 @@ class Item extends Component {
             this.props.item.value
             ? ` ${styles.button} ${cartBag && styles["cart-button"]} ${
                 styles.add
-              } `
+              } ${!isSwatchAttrType && styles["cart-button-swatch"]}`
             : cartBag
-            ? `${styles.button} ${styles["cart-button"]}`
+            ? `${styles.button} ${styles["cart-button"]} ${
+                !isSwatchAttrType && styles["cart-button-swatch"]
+              }`
             : styles.button
         }
         onClick={() =>

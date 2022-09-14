@@ -4,9 +4,6 @@ import SingleProductContext from "../context/singleproductcontext/single-product
 
 class Currencies extends Component {
   static contextType = SingleProductContext;
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const {

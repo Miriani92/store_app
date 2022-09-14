@@ -53,6 +53,7 @@ class Gallery extends Component {
         </div>
         <img
           src={this.props.gallery[this.state.index]}
+          alt="productimage"
           className={
             cartBag ? `${styles.image} ${styles["bag-image"]}` : styles.image
           }

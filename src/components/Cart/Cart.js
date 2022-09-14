@@ -7,10 +7,6 @@ import SingleProductContext from "../../context/singleproductcontext/single-prod
 class Cart extends Component {
   static contextType = SingleProductContext;
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { singleProduct, totalQuantity, totalPrice, choseCurrencySymbol } =
       this.context;
@@ -24,26 +20,34 @@ class Cart extends Component {
         {singleProduct.map((product, index) => {
           return <SingleCartItem {...product} key={index} />;
         })}
-        <h3>
+        <h3 className={styles.tax}>
           Tax 21%:
-          <span>
+          <span style={{ marginLeft: 21, fontWeight: 700 }}>
             {choseCurrencySymbol + ((totalPrice * 21) / 100).toFixed(2)}
           </span>
         </h3>
-        <h3>
-          Quantity: <span>{totalQuantity}</span>
+        <h3 className={styles.productQuantity}>
+          Quantity: <span style={{ fontWeight: 700 }}>{totalQuantity}</span>
         </h3>
-        <h3>
-          Total: <span>{choseCurrencySymbol + totalPrice.toFixed(2)}</span>{" "}
+        <h3 className={styles.totalPrice}>
+          Total:{" "}
+          <span style={{ marginLeft: 43, fontWeight: 700 }}>
+            {choseCurrencySymbol + totalPrice.toFixed(2)}
+          </span>{" "}
         </h3>
         <Button
           text="ORDER"
           style={{
+            border: "none",
+            display: "block",
+            fontWeight: 600,
             width: 280,
             height: 45,
-            backgroundColor: "green",
+            backgroundColor: "#5ECE7B",
             color: "white",
-            marginTop: 20,
+            fontFamily: "Raleway",
+            marginTop: 16,
+            fontSize: 14,
           }}
         />
       </div>

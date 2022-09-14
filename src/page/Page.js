@@ -6,9 +6,6 @@ import { CartContext } from "../context/cartcontext/Cart-actions";
 
 class Page extends Component {
   static contextType = CartContext;
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { isCartOpen } = this.context;
