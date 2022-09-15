@@ -11,8 +11,6 @@ class Item extends Component {
     const isSwatchAttrType = this.props.attr.type !== "swatch";
     const swatchStyle = {
       backgroundColor: !isSwatchAttrType && `${this.props.item.value}`,
-      // width: isSwatchAttrType && cartBag && 24,
-      // height: isSwatchAttrType && cartBag && 24,
       outline: isSwatchAttrType && "none",
       border: isSwatchAttrType && "1px solid #1d1f22",
       width: !isSwatchAttrType && !cartBag && 32,
